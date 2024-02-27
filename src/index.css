@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    170deg,
+    rgba(4, 0, 28, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  min-height: 100vh;
+  font-family: "Encode Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Bruno Ace SC", sans-serif;
+}
+
+/* NAV LINKS HOVER EFFECT */
+.music-wave {
+  position: relative;
+}
+
+.music-wave:hover::before {
+  opacity: 1;
+}
+
+.music-wave::before {
+  content: url(./assets/sound-wave.gif);
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.music-wave.active {
+  color: #b129d3;
+}
+
+.music-wave.active:before {
+  opacity: 1;
+}
+
+/* BTN HOVER */
+.main-btn span:nth-child(1),
+.main-btn span:nth-child(3) {
+  transition: height 0.3s;
+}
+
+.main-btn:hover span:nth-child(1),
+.main-btn:hover span:nth-child(3) {
+  height: 100%;
+}
+
+.main-btn span:nth-child(2),
+.main-btn span:nth-child(4) {
+  transition: width 0.3s;
+}
+
+.main-btn:hover span:nth-child(2),
+.main-btn:hover span:nth-child(4) {
+  width: 100%;
+}
+
+/* slider about */
+.slick-slide > div {
+  margin: 0 15px;
+}
+.slick-list {
+  margin: 0 -15px;
+}
+
+.slick-active > button {
+  background-color: #ff3767;
+}
+
+@media (min-width: 520px) {
+  .max-width-small {
+    max-width: 205px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* slider about */
+  .slick-slide > div {
+    margin: 0 20px;
+  }
+  .slick-list {
+    margin: 0 -20px;
+  }
+
+  /* hide scroll - about */
+  /* Chrome, Safari and Opera */
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scroll {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

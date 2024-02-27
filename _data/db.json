@@ -1,0 +1,320 @@
+{
+  "tours": [
+    {
+      "id": "1",
+      "date": { "day": "15", "month": "april", "year": "2024" },
+      "event": "live madness london",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "wembley arena",
+      "place": "London (England)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "2",
+      "date": { "day": "22", "month": "april", "year": "2024" },
+      "event": "a state of bass #69",
+      "info": "Monthly dose of strong electronic sounds combined with attractive, flexible dancers and excellent stage effects.",
+      "venue": "ergo arena",
+      "place": "Sopot/Gdańsk (Poland)",
+      "ticketPrice": "29"
+    },
+    {
+      "id": "3",
+      "date": { "day": "23", "month": "april", "year": "2024" },
+      "event": "live madness lodz",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "atlas arena",
+      "place": "Łódź (Poland)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "4",
+      "date": { "day": "29", "month": "april", "year": "2024" },
+      "event": "fire nights mexico",
+      "info": "United eastern europe's best djs will take you on an amazing musical journey - lots of fire and madness on stage as always",
+      "venue": "Zamna",
+      "place": "Tulum (Mexico)",
+      "ticketPrice": "39"
+    },
+    {
+      "id": "5",
+      "date": { "day": "30", "month": "april", "year": "2024" },
+      "event": "live madness ibiza",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "Ushuaïa",
+      "place": "Ibiza (Spain)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "6",
+      "date": { "day": "7", "month": "may", "year": "2024" },
+      "event": "a state of bass #70",
+      "info": "Monthly dose of strong electronic sounds combined with attractive, flexible dancers and excellent stage effects.",
+      "venue": "laroc",
+      "place": "Las Vegas (USA)",
+      "ticketPrice": "29"
+    },
+    {
+      "id": "7",
+      "date": { "day": "9", "month": "may", "year": "2024" },
+      "event": "live madness vegas",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "omnia",
+      "place": "Las Vegas (USA)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "8",
+      "date": { "day": "15", "month": "may", "year": "2024" },
+      "event": "Electric Daisy Carnival",
+      "info": "Expect a huge playground with amusement park rides, amazing light shows, pyrotechnics, performers, art and, of course, the world's best DJs.",
+      "venue": "sin city",
+      "place": "Las Vegas (USA)",
+      "ticketPrice": "59"
+    },
+    {
+      "id": "9",
+      "date": { "day": "16", "month": "may", "year": "2024" },
+      "event": "fire nights spain",
+      "info": "United eastern europe's best djs will take you on an amazing musical journey - lots of fire and madness on stage as always",
+      "venue": "elrow",
+      "place": "Barcelona (Spain)",
+      "ticketPrice": "39"
+    },
+    {
+      "id": "10",
+      "date": { "day": "23", "month": "may", "year": "2024" },
+      "event": "live madness manchester",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "Warehouse Project",
+      "place": "Manchester (England)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "11",
+      "date": { "day": "24", "month": "may", "year": "2024" },
+      "event": "a state of bass #71",
+      "info": "Monthly dose of strong electronic sounds combined with attractive, flexible dancers and excellent stage effects.",
+      "venue": "paradiso",
+      "place": "Amsterdam (Netherlands)",
+      "ticketPrice": "29"
+    },
+    {
+      "id": "12",
+      "date": { "day": "30", "month": "may", "year": "2024" },
+      "event": "live madness new york",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "forest hills stadium",
+      "place": "New York (USA)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "13",
+      "date": { "day": "19", "month": "june", "year": "2024" },
+      "event": "a state of bass #72",
+      "info": "Monthly dose of strong electronic sounds combined with attractive, flexible dancers and excellent stage effects.",
+      "venue": "the ground miami",
+      "place": "Miami (USA)",
+      "ticketPrice": "29"
+    },
+    {
+      "id": "14",
+      "date": { "day": "21", "month": "june", "year": "2024" },
+      "event": "live madness chicago",
+      "info": "Total musical madness in cooperation with amazing artists, excellent atmosphere - music, lasers, acrobatics.",
+      "venue": "radius",
+      "place": "Chicago (USA)",
+      "ticketPrice": "49"
+    },
+    {
+      "id": "15",
+      "date": { "day": "5", "month": "july", "year": "2024" },
+      "event": "a state of bass #73",
+      "info": "Monthly dose of strong electronic sounds combined with attractive, flexible dancers and excellent stage effects.",
+      "venue": "void club",
+      "place": "Berlin (Germany)",
+      "ticketPrice": "29"
+    },
+    {
+      "id": "16",
+      "date": { "day": "12", "month": "july", "year": "2024" },
+      "event": "ostend beach festival",
+      "info": "Sun, beach, beautiful women, variety of stages - each stage with its own unique atmosphere and musical style.",
+      "venue": "Ostend Beach",
+      "place": "Ostenda (Belgium)",
+      "ticketPrice": "55"
+    },
+    {
+      "id": "17",
+      "date": { "day": "14", "month": "july", "year": "2024" },
+      "event": "airbeat-one festival",
+      "info": "One of the largest EDM festival in Europe. Famous for its stunning scenery and impressive visual production, check it out if you don't believe us",
+      "venue": "Airfield",
+      "place": "Neustadt-Glewe (Germany)",
+      "ticketPrice": "59"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "1"
+    }
+  ],
+  "albums": [
+    {
+      "name": "Unstoppable",
+      "cover": "https://scontent.xx.fbcdn.net/v/t1.15752-9/427979677_382607707850836_6739793826484001630_n.png?_nc_cat=108&ccb=1-7&_nc_sid=510075&_nc_ohc=9JNmuXa2jTYAX93mTgL&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSohXfFTNEp48A_SdIeWBALrAfg0cTHD_JSikiUVxVRYQ&oe=65FA81F6",
+      "year": "2021",
+      "music": [
+        {
+          "id": "1",
+          "title": "Under Arrest",
+          "duration": "0:00"
+        },
+        {
+          "id": "2",
+          "title": "Boobylicious",
+          "duration": "0:00"
+        },
+        {
+          "id": "3",
+          "title": "Devastation",
+          "duration": "0:00"
+        },
+        {
+          "id": "4",
+          "title": "Ready for the Night",
+          "duration": "0:00"
+        },
+        {
+          "id": "5",
+          "title": "Sneaky Dingdong",
+          "duration": "0:00"
+        },
+        {
+          "id": "6",
+          "title": "Pump the Beat Up",
+          "duration": "0:00"
+        },
+        {
+          "id": "7",
+          "title": "Clap that Booty",
+          "duration": "0:00"
+        },
+        {
+          "id": "8",
+          "title": "Show Me the Beach",
+          "duration": "0:00"
+        },
+        {
+          "id": "9",
+          "title": "Clap Your Hands",
+          "duration": "0:00"
+        }
+      ]
+    },
+    {
+      "name": "Unlocked",
+      "cover": "https://scontent.xx.fbcdn.net/v/t1.15752-9/427067478_1188861682083012_2182519205215820392_n.png?_nc_cat=106&ccb=1-7&_nc_sid=510075&_nc_ohc=COPy4iMP-bMAX9NjaV6&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRyxHKrFAtCi-gyLEU6T4f-KWZxvfl5M5pIqo1IinYvtg&oe=65FA8B4E",
+      "year": "2022",
+      "music": [
+        {
+          "id": "1",
+          "title": "What is life",
+          "duration": "0:00"
+        },
+        {
+          "id": "2",
+          "title": "Satisfaction",
+          "duration": "0:00"
+        },
+        {
+          "id": "3",
+          "title": "Hit the b-Ass",
+          "duration": "0:00"
+        },
+        {
+          "id": "4",
+          "title": "My Heart Aches",
+          "duration": "0:00"
+        },
+        {
+          "id": "5",
+          "title": "Teabag in the Morning",
+          "duration": "0:00"
+        },
+        {
+          "id": "6",
+          "title": "Sexplosion",
+          "duration": "0:00"
+        },
+        {
+          "id": "7",
+          "title": "Underboobed",
+          "duration": "0:00"
+        }
+      ]
+    },
+    {
+      "name": "Outta Control",
+      "cover": "https://scontent.xx.fbcdn.net/v/t1.15752-9/427971758_418516060577759_5755205456042112055_n.png?_nc_cat=100&ccb=1-7&_nc_sid=510075&_nc_ohc=s5RWJZXw_a0AX_5-Xil&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdR5G6QPqpNjyarZokIFWWu8Y_X1dfT7cHEqM_UGSlqqfw&oe=65FA718F",
+      "year": "2024",
+      "music": [
+        {
+          "id": "1",
+          "title": "General Commander",
+          "duration": "0:00"
+        },
+        {
+          "id": "2",
+          "title": "Contract to Kill",
+          "duration": "0:00"
+        },
+        {
+          "id": "3",
+          "title": "Against the Dark",
+          "duration": "0:00"
+        },
+        {
+          "id": "4",
+          "title": "A Dangerous Man",
+          "duration": "0:00"
+        },
+        {
+          "id": "5",
+          "title": "Force of Execution",
+          "duration": "0:00"
+        },
+        {
+          "id": "6",
+          "title": "Into the Sun",
+          "duration": "0:00"
+        },
+        {
+          "id": "7",
+          "title": "Belly of the Beast",
+          "duration": "0:00"
+        },
+        {
+          "id": "8",
+          "title": "Out for a Kill",
+          "duration": "0:00"
+        },
+        {
+          "id": "9",
+          "title": "Attack Force",
+          "duration": "0:00"
+        },
+        {
+          "id": "10",
+          "title": "Executive Decision",
+          "duration": "0:00"
+        },
+        {
+          "id": "11",
+          "title": "Out of Reach",
+          "duration": "0:00"
+        }
+      ]
+    }
+  ]
+}
