@@ -215,37 +215,37 @@ export const albums = [
     year: "2022",
     music: [
       {
-        id: 1,
+        id: 10,
         title: "What is life",
         duration: "0:00",
       },
       {
-        id: 2,
+        id: 11,
         title: "Satisfaction",
         duration: "0:00",
       },
       {
-        id: 3,
+        id: 12,
         title: "Hit the b-Ass",
         duration: "0:00",
       },
       {
-        id: 4,
+        id: 13,
         title: "My Heart Aches",
         duration: "0:00",
       },
       {
-        id: 5,
+        id: 14,
         title: "Teabag in the Morning",
         duration: "0:00",
       },
       {
-        id: 6,
+        id: 15,
         title: "Sexplosion",
         duration: "0:00",
       },
       {
-        id: 7,
+        id: 16,
         title: "Underboobed",
         duration: "0:00",
       },
@@ -258,57 +258,57 @@ export const albums = [
     year: "2024",
     music: [
       {
-        id: 1,
+        id: 17,
         title: "General Commander",
         duration: "0:00",
       },
       {
-        id: 2,
+        id: 18,
         title: "Contract to Kill",
         duration: "0:00",
       },
       {
-        id: 3,
+        id: 19,
         title: "Against the Dark",
         duration: "0:00",
       },
       {
-        id: 4,
+        id: 20,
         title: "A Dangerous Man",
         duration: "0:00",
       },
       {
-        id: 5,
+        id: 21,
         title: "Force of Execution",
         duration: "0:00",
       },
       {
-        id: 6,
+        id: 22,
         title: "Into the Sun",
         duration: "0:00",
       },
       {
-        id: 7,
+        id: 23,
         title: "Belly of the Beast",
         duration: "0:00",
       },
       {
-        id: 8,
+        id: 24,
         title: "Out for a Kill",
         duration: "0:00",
       },
       {
-        id: 9,
+        id: 25,
         title: "Attack Force",
         duration: "0:00",
       },
       {
-        id: 10,
+        id: 26,
         title: "Executive Decision",
         duration: "0:00",
       },
       {
-        id: 11,
+        id: 27,
         title: "Out of Reach",
         duration: "0:00",
       },

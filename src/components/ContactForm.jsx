@@ -24,8 +24,6 @@ const ContactForm = () => {
         type="text"
         className=" bg-input-bg px-5 py-3 text-[0.875rem] text-main-r placeholder:text-[0.875rem] placeholder:text-main-r"
         placeholder="Name"
-        id="name"
-        name="name"
         value={nameInput}
         onChange={(e) => setNameInput(e.target.value)}
       />
@@ -33,8 +31,6 @@ const ContactForm = () => {
         type="email"
         className=" bg-input-bg px-5 py-3 font-encode-sans text-[0.875rem] font-medium text-main-r placeholder:text-[0.875rem] placeholder:text-main-r"
         placeholder="E-mail"
-        id="email"
-        name="email"
         value={emailInput}
         onChange={(e) => setEmailInput(e.target.value)}
       />
