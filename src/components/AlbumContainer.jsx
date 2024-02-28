@@ -7,7 +7,7 @@ const AlbumContainer = ({ albums, currentAlbum }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div className="mt-[calc(24px+1.25rem)] bg-input-bg px-3 py-4 sm:px-8 lg:w-4/5">
+    <div className="mt-[calc(24px+1.25rem)] bg-input-bg px-3 py-4 sm:px-8 lg:w-4/5 mb-4">
       <AlbumHeader
         albums={albums}
         currentAlbum={currentAlbum}
