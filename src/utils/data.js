@@ -158,7 +158,7 @@ export const albums = [
   {
     name: "Unstoppable",
     cover:
-      "https://scontent.xx.fbcdn.net/v/t1.15752-9/427979677_382607707850836_6739793826484001630_n.png?_nc_cat=108&ccb=1-7&_nc_sid=510075&_nc_ohc=9JNmuXa2jTYAX93mTgL&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSohXfFTNEp48A_SdIeWBALrAfg0cTHD_JSikiUVxVRYQ&oe=65FA81F6",
+      "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbgR55ibwsotKQBXwa5XctFDQgscuKwGGrES4Mi1GZhn9VyBTllrB_eGxecBRTUappB7_0gb8DAk5wWtNUEgqtAtH90=w1920-h919",
     year: "2021",
     music: [
       {
@@ -211,7 +211,7 @@ export const albums = [
   {
     name: "Unlocked",
     cover:
-      "https://scontent.xx.fbcdn.net/v/t1.15752-9/427067478_1188861682083012_2182519205215820392_n.png?_nc_cat=106&ccb=1-7&_nc_sid=510075&_nc_ohc=COPy4iMP-bMAX9NjaV6&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRyxHKrFAtCi-gyLEU6T4f-KWZxvfl5M5pIqo1IinYvtg&oe=65FA8B4E",
+      "https://lh3.google.com/u/0/d/1O7a0hEhZhhxUSmuYOuoh_iqgbd7Mzl8Q=w1920-h919-iv1",
     year: "2022",
     music: [
       {
@@ -254,7 +254,7 @@ export const albums = [
   {
     name: "Outta Control",
     cover:
-      "https://scontent.xx.fbcdn.net/v/t1.15752-9/427971758_418516060577759_5755205456042112055_n.png?_nc_cat=100&ccb=1-7&_nc_sid=510075&_nc_ohc=s5RWJZXw_a0AX_5-Xil&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdR5G6QPqpNjyarZokIFWWu8Y_X1dfT7cHEqM_UGSlqqfw&oe=65FA718F",
+      "https://lh3.google.com/u/0/d/1FK65uIvZx479Hk4OKEYfoa1F0QgpEYrI=w735-h919-iv1",
     year: "2024",
     music: [
       {
