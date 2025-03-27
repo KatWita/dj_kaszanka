@@ -158,7 +158,7 @@ export const albums = [
   {
     name: "Unstoppable",
     cover:
-      "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbgR55ibwsotKQBXwa5XctFDQgscuKwGGrES4Mi1GZhn9VyBTllrB_eGxecBRTUappB7_0gb8DAk5wWtNUEgqtAtH90=w1920-h919",
+      "https://lh3.google.com/u/0/d/1oZMBcWKm8WhbBReQDpyza6NpONHiMbVH=w1920-h919-iv1",
     year: "2021",
     music: [
       {
