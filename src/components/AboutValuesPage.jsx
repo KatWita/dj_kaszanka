@@ -1,5 +1,6 @@
 import MainButton from "./MainButton";
 import ScrollDownIcon from "./ScrollDownIcon";
+import CountUp from "./CountUp";
 import triangleHome from "../assets/triangle-home.svg";
 import secondKaszankaMobile from "../assets/kaszanka-about-2-mobile.png";
 import secondKaszankaDesktop from "../assets/kaszanka-about-2-desktop.png";
@@ -22,14 +23,14 @@ const AboutValuesPage = () => {
             className="absolute -right-4 top-[-68px] w-[68px]"
           />
           <div className="flex flex-wrap sm:justify-between sm:gap-6 md:gap-10 2xl:gap-16">
-            {aboutInfo.map(({ value, text }) => {
+            {aboutInfo.map(({ value, text }, i) => {
               return (
                 <div
                   className="w-1/2 text-center font-bruno-ace sm:w-auto md:w-auto"
                   key={text}
                 >
                   <p className="text-3xl sm:text-5xl xl:text-6xl 2xl:text-7xl">
-                    {value}
+                    <CountUp value={value} delay={i * 0.15} />
                   </p>
                   <p className="text-[1.2rem] text-main-r sm:text-[1.4rem] xl:text-[1.5rem] 2xl:text-[1.625rem]">
                     {text}
