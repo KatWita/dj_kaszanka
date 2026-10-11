@@ -5,12 +5,40 @@ import { redPattern, bluePattern, purplePattern } from "../assets/tours";
 import ToursFilterBtns from "../components/ToursFilterBtns";
 import Tours from "../components/Tours";
 import { useState } from "react";
-import { tours } from "../utils/data";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { fetchEventMonths, fetchEventsPage } from "../lib/events";
+
+const PAGE_SIZE = 3;
 
 const ToursPage = () => {
-  const [month, setMonth] = useState("april");
-  const [currentItem, setCurrentItem] = useState(0);
-  const [toursCount, setToursCount] = useState(3);
+  const monthsQuery = useQuery({ queryKey: ["event-months"], queryFn: fetchEventMonths });
+  const months = monthsQuery.data ?? [];
+  const [selectedKey, setSelectedKey] = useState(null);
+  // default to the first month that has events
+  const month = months.find((m) => m.key === selectedKey) ?? months[0];
+
+  const eventsQuery = useInfiniteQuery({
+    queryKey: ["events", month?.key],
+    enabled: Boolean(month),
+    initialPageParam: 0,
+    queryFn: ({ pageParam }) =>
+      fetchEventsPage({ from: month.from, to: month.to, start: pageParam, size: PAGE_SIZE }),
+    // next page starts where the loaded ones end, until we have them all
+    getNextPageParam: (lastPage, pages) => {
+      const loaded = pages.reduce((n, page) => n + page.items.length, 0);
+      return loaded < lastPage.total ? loaded : undefined;
+    },
+  });
+
+  const tours = eventsQuery.data?.pages.flatMap((page) => page.items) ?? [];
+  const total = eventsQuery.data?.pages[0]?.total ?? 0;
+  // one combined status for the list: months request first, then events
+  const status =
+    monthsQuery.isError || eventsQuery.isError
+      ? "error"
+      : monthsQuery.isPending || (month && eventsQuery.isPending)
+        ? "pending"
+        : "success";
 
   return (
     <motion.section
@@ -19,26 +47,26 @@ const ToursPage = () => {
       transition={{ duration: 1 }}
       className="pb-player px-page relative overflow-hidden lg:flex lg:min-h-[calc(100vh-81px)]"
     >
-      <div className="mt-16 lg:mt-[114px]">
+      <div className="mt-16 w-full lg:mt-[114px]">
         <SectionTitle
-          text="Upcomming"
+          text="Upcoming"
           redText="dates"
           triangle={triangle}
           twoPart={true}
         />
         <div className="mt-6 flex w-full flex-col items-center justify-center">
-          <ToursFilterBtns
-            setMonth={setMonth}
-            currentItem={currentItem}
-            setCurrentItem={setCurrentItem}
-            setToursCount={setToursCount}
-            tours={tours}
-          />
+          {months.length > 0 && (
+            <ToursFilterBtns months={months} selectedKey={month?.key} onSelect={setSelectedKey} />
+          )}
           <Tours
-            month={month}
-            toursCount={toursCount}
-            setToursCount={setToursCount}
             tours={tours}
+            firstPageSize={eventsQuery.data?.pages[0]?.items.length ?? 0}
+            total={total}
+            status={status}
+            hasMore={eventsQuery.hasNextPage}
+            isFetchingMore={eventsQuery.isFetchingNextPage}
+            onLoadMore={() => eventsQuery.fetchNextPage()}
+            onRetry={() => (monthsQuery.isError ? monthsQuery.refetch() : eventsQuery.refetch())}
           />
         </div>
         <div className="absolute inset-0 z-[-1]">

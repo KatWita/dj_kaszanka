@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@sanity/client": "^8.9.0",
+    "@tanstack/react-query": "^5.104.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "motion": "^14.1.0",

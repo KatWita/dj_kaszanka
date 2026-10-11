@@ -1,9 +1,10 @@
 import { Link } from "react-router";
 
-// Renders a router <Link> when `to` is given (navigation),
-// otherwise a real <button> (actions like "load more" or form submit).
+// Renders a router <Link> when `to` is given (navigation), an <a> for external
+// `href`, otherwise a real <button> (actions like "load more" or form submit).
 const MainButton = ({
   to,
+  href,
   content,
   classnames = "",
   type = "button",
@@ -27,6 +28,14 @@ const MainButton = ({
       <Link to={to} className={className} onClick={onClick} {...rest}>
         {inner}
       </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className} onClick={onClick} {...rest}>
+        {inner}
+      </a>
     );
   }
 
