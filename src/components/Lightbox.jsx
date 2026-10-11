@@ -7,13 +7,13 @@ const WHEEL_THRESHOLD = 30; // px of wheel movement that counts as one "step"
 const WHEEL_COOLDOWN = 450; // ms between photo changes while wheeling
 const SWIPE_THRESHOLD = 50; // px of horizontal drag for a swipe
 
-// same skewed-bars arrow as the About carousel
-const Arrow = ({ dir, onClick }) => (
+// same skewed-bars arrow as the About carousel; `className` sets the clickable area
+const Arrow = ({ dir, onClick, className = "size-12" }) => (
   <button
     type="button"
     onClick={onClick}
     aria-label={dir === "next" ? "Next photo" : "Previous photo"}
-    className="group grid size-12 place-items-center focus-visible:outline-2 focus-visible:outline-main-r"
+    className={`group grid place-items-center focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-main-r ${className}`}
   >
     <span className="block">
       <span className={`block h-5 w-1 bg-white duration-300 group-hover:bg-main-b ${dir === "next" ? "skew-x-20" : "skew-x-[-20deg]"}`} />
@@ -178,13 +178,18 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
         <VscChromeClose size={34} />
       </button>
 
-      {/* desktop arrows are pinned to the screen edges, so they don't move with the photo width */}
-      <div className="absolute top-1/2 left-4 hidden -translate-y-1/2 md:block xl:left-10">
-        <Arrow dir="prev" onClick={() => go(-1)} />
-      </div>
-      <div className="absolute top-1/2 right-4 hidden -translate-y-1/2 md:block xl:right-10">
-        <Arrow dir="next" onClick={() => go(1)} />
-      </div>
+      {/* desktop: each arrow is a tall strip along the screen edge (pinned, so it doesn't
+          move with the photo width, and easy to hit: next to / above / below the arrow works) */}
+      <Arrow
+        dir="prev"
+        onClick={() => go(-1)}
+        className="absolute inset-y-24 left-0 hidden w-24 duration-300 hover:bg-white/5 md:grid"
+      />
+      <Arrow
+        dir="next"
+        onClick={() => go(1)}
+        className="absolute inset-y-24 right-0 hidden w-24 duration-300 hover:bg-white/5 md:grid"
+      />
 
       <div className="flex items-center">
         <AnimatePresence mode="popLayout" initial={false} custom={direction}>
@@ -202,18 +207,11 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
       </div>
 
       <div className="flex w-full max-w-[1100px] items-center justify-between gap-4 text-sm">
-        <div className="md:hidden">
-          <Arrow dir="prev" onClick={() => go(-1)} />
-        </div>
-        <p className="flex-1 text-center text-white/80 md:text-left" aria-live="polite">
-          <span className="mr-3 font-bruno-ace text-main-r">
-            {index + 1} / {photos.length}
-          </span>
-          <span className="max-md:sr-only">{photo.alt}</span>
+        <Arrow dir="prev" onClick={() => go(-1)} className="size-16 md:hidden" />
+        <p className="flex-1 text-center font-bruno-ace text-main-r" aria-live="polite">
+          {index + 1} / {photos.length}
         </p>
-        <div className="md:hidden">
-          <Arrow dir="next" onClick={() => go(1)} />
-        </div>
+        <Arrow dir="next" onClick={() => go(1)} className="size-16 md:hidden" />
       </div>
     </motion.div>,
     document.body,
