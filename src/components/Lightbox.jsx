@@ -13,11 +13,11 @@ const Arrow = ({ dir, onClick, className = "size-12" }) => (
     type="button"
     onClick={onClick}
     aria-label={dir === "next" ? "Next photo" : "Previous photo"}
-    className={`group grid place-items-center focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-main-r ${className}`}
+    className={`group grid place-items-center outline-none ${className}`}
   >
-    <span className="block">
-      <span className={`block h-5 w-1 bg-white duration-300 group-hover:bg-main-b ${dir === "next" ? "skew-x-20" : "skew-x-[-20deg]"}`} />
-      <span className={`block h-5 w-1 bg-white duration-300 group-hover:bg-main-b ${dir === "next" ? "skew-x-[-20deg]" : "skew-x-20"}`} />
+    <span className="block group-focus-visible:outline-2 group-focus-visible:outline-offset-8 group-focus-visible:outline-main-r">
+      <span className={`block h-5 w-1 bg-white duration-300 group-hover:bg-main-p group-hover:shadow-[0_0_12px_var(--color-main-p)] ${dir === "next" ? "skew-x-20" : "skew-x-[-20deg]"}`} />
+      <span className={`block h-5 w-1 bg-white duration-300 group-hover:bg-main-p group-hover:shadow-[0_0_12px_var(--color-main-p)] ${dir === "next" ? "skew-x-[-20deg]" : "skew-x-20"}`} />
     </span>
   </button>
 );
@@ -168,6 +168,13 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
       onPointerCancel={() => (swipeStart.current = null)}
       className="fixed inset-0 z-[999] flex touch-pan-y flex-col items-center justify-center gap-4 bg-modal-bg px-4 text-white [--lb-max-w:calc(100vw-2rem)] md:[--lb-max-w:calc(100vw-12rem)]"
     >
+      <p
+        className="absolute top-5 left-5 grid h-11 place-items-center font-bruno-ace text-main-r lg:top-8 lg:left-8"
+        aria-live="polite"
+      >
+        {index + 1} / {photos.length}
+      </p>
+
       <button
         ref={closeRef}
         type="button"
@@ -183,12 +190,12 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
       <Arrow
         dir="prev"
         onClick={() => go(-1)}
-        className="absolute inset-y-24 left-0 hidden w-24 duration-300 hover:bg-white/5 md:grid"
+        className="absolute inset-y-24 left-0 hidden w-24 md:grid"
       />
       <Arrow
         dir="next"
         onClick={() => go(1)}
-        className="absolute inset-y-24 right-0 hidden w-24 duration-300 hover:bg-white/5 md:grid"
+        className="absolute inset-y-24 right-0 hidden w-24 md:grid"
       />
 
       <div className="flex items-center">
@@ -206,12 +213,10 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
         </AnimatePresence>
       </div>
 
-      <div className="flex w-full max-w-[1100px] items-center justify-between gap-4 text-sm">
-        <Arrow dir="prev" onClick={() => go(-1)} className="size-16 md:hidden" />
-        <p className="flex-1 text-center font-bruno-ace text-main-r" aria-live="polite">
-          {index + 1} / {photos.length}
-        </p>
-        <Arrow dir="next" onClick={() => go(1)} className="size-16 md:hidden" />
+      {/* phones: arrows under the photo */}
+      <div className="flex w-full items-center justify-between md:hidden">
+        <Arrow dir="prev" onClick={() => go(-1)} className="size-16" />
+        <Arrow dir="next" onClick={() => go(1)} className="size-16" />
       </div>
     </motion.div>,
     document.body,
