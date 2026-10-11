@@ -17,7 +17,7 @@ const validate = ({ name, email, message }) => ({
 });
 
 const fieldClass =
-  "w-full border border-main-b bg-[#0f0a26] px-5 py-3 text-[0.875rem] text-main-r outline-none duration-300 placeholder:text-[0.875rem] placeholder:text-main-r/80 focus:border-main-p aria-[invalid=true]:border-main-r";
+  "w-full border border-main-b bg-[#0c0820] px-5 py-3 text-[0.875rem] text-main-r outline-none duration-300 placeholder:text-[0.875rem] placeholder:text-main-r/80 focus:border-main-p aria-[invalid=true]:border-main-r";
 
 const Field = ({ id, label, error, children }) => (
   <div>
@@ -45,7 +45,11 @@ const ContactForm = () => {
   const shown = (field) => (touched[field] ? errors[field] : "");
 
   const update = (field) => (e) => setValues((v) => ({ ...v, [field]: e.target.value }));
-  const blur = (field) => () => setTouched((t) => ({ ...t, [field]: true }));
+  // leaving an EMPTY field never shows an error (only SEND does);
+  // leaving a field with something wrong in it does (e.g. an unfinished e-mail)
+  const blur = (field) => () => {
+    if (values[field].trim()) setTouched((t) => ({ ...t, [field]: true }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,7 +91,7 @@ const ContactForm = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             role="status"
-            className="flex flex-col items-start gap-6 border border-main-b bg-[#0f0a26] px-6 py-8"
+            className="flex flex-col items-start gap-6 border border-main-b bg-[#0c0820] px-6 py-8"
           >
             <p className="font-bruno-ace text-xl">
               Thanks{sentTo ? `, ${sentTo}` : ""}<span className="text-main-r">!</span>

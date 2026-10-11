@@ -255,6 +255,6 @@ input:-webkit-autofill:focus,
 textarea:-webkit-autofill {
   -webkit-text-fill-color: var(--color-main-r);
   caret-color: var(--color-main-r);
-  box-shadow: 0 0 0 1000px #0f0a26 inset;
+  box-shadow: 0 0 0 1000px #0c0820 inset;
   transition: background-color 9999s ease-out 0s;
 }
