@@ -5,8 +5,8 @@ export function NextArrow({ style, onClick }) {
       style={{ ...style, display: "inline-block" }}
       onClick={onClick}
     >
-      <div className="bg-main-b-h h-5 w-1 skew-x-[20deg] duration-300 group-hover:bg-main-b"></div>
-      <div className="bg-main-b-h h-5 w-1 -skew-x-[20deg] duration-300 group-hover:bg-main-b"></div>
+      <div className="bg-main-b-h h-5 w-1 skew-x-20 duration-300 group-hover:bg-main-b"></div>
+      <div className="bg-main-b-h h-5 w-1 skew-x-[-20deg] duration-300 group-hover:bg-main-b"></div>
     </div>
   );
 }
@@ -18,8 +18,8 @@ export function PrevArrow({ style, onClick }) {
       style={{ ...style, display: "inline-block" }}
       onClick={onClick}
     >
-      <div className="bg-main-b-h h-5 w-1 -skew-x-[20deg] duration-300 group-hover:bg-main-b"></div>
-      <div className="bg-main-b-h h-5 w-1 skew-x-[20deg] duration-300 group-hover:bg-main-b"></div>
+      <div className="bg-main-b-h h-5 w-1 skew-x-[-20deg] duration-300 group-hover:bg-main-b"></div>
+      <div className="bg-main-b-h h-5 w-1 skew-x-20 duration-300 group-hover:bg-main-b"></div>
     </div>
   );
 }

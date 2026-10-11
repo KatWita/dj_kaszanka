@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-
 const ToursFilterBtns = ({
   setMonth,
   currentItem,
@@ -7,7 +5,6 @@ const ToursFilterBtns = ({
   setToursCount,
   tours,
 }) => {
-  // const tours = useLoaderData();
   const monthBtns = [
     ...new Set(
       tours.map(
@@ -22,9 +19,10 @@ const ToursFilterBtns = ({
       <div className="flex gap-6 sm:gap-12 md:gap-16 lg:gap-24">
         {monthBtns.map((btn, index) => {
           return (
-            <NavLink
-              key={index}
-              to="#"
+            <button
+              key={btn}
+              type="button"
+              aria-pressed={currentItem === index}
               className={`duration-300 hover:text-main-p ${currentItem === index ? "text-main-p" : "text-white"}`}
               onClick={() => {
                 setCurrentItem(index);
@@ -33,7 +31,7 @@ const ToursFilterBtns = ({
               }}
             >
               {btn}
-            </NavLink>
+            </button>
           );
         })}
       </div>

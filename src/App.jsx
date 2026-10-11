@@ -1,4 +1,5 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
 import Layout from "./Layout";
 import {
   HomePage,
@@ -8,10 +9,6 @@ import {
   GalleryPage,
   ContactPage,
 } from "./pages";
-
-// loaders
-// import { loader as toursLoader } from "./pages/ToursPage";
-// import { loader as albumsLoader } from "./pages/AlbumsPage";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +26,10 @@ const router = createBrowserRouter([
       {
         path: "albums",
         element: <AlbumsPage />,
-        // loader: albumsLoader,
       },
       {
         path: "tours",
         element: <ToursPage />,
-        // loader: toursLoader,
       },
       {
         path: "gallery",

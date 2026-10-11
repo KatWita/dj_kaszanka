@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const SocialIcons = ({ classnames, cl }) => {
+const SocialIcons = ({ classnames }) => {
   return (
     <div className={`flex ${classnames}`}>
       <Link to="https://facebook.com" target="_blank" rel="noopener noreferrer">
