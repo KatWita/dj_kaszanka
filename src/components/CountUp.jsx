@@ -3,9 +3,12 @@ import { animate, useInView, useReducedMotion } from "motion/react";
 
 /**
  * Counts from 0 to `value` the first time it scrolls into view.
- * The final number is rendered invisibly underneath to reserve its width,
- * so neighbouring columns don't shift while the digits grow.
+ * Digits in the site font have different widths, so intermediate values can be
+ * wider than the final one. Invisible placeholders ("000", "111" … "999" for a
+ * 3-digit value) reserve the widest possible width, so nothing around it moves.
  */
+const PLACEHOLDER_DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 const CountUp = ({ value, duration = 2, delay = 0, className = "" }) => {
   const ref = useRef(null);
   // start only once the numbers are clearly on screen (not just peeking in at the bottom edge)
@@ -33,9 +36,11 @@ const CountUp = ({ value, duration = 2, delay = 0, className = "" }) => {
 
   return (
     <span className={`inline-grid ${className}`}>
-      <span className="invisible col-start-1 row-start-1" aria-hidden="true">
-        {value}
-      </span>
+      {PLACEHOLDER_DIGITS.map((d) => (
+        <span key={d} className="invisible col-start-1 row-start-1" aria-hidden="true">
+          {d.repeat(String(value).length)}
+        </span>
+      ))}
       <span ref={ref} className="col-start-1 row-start-1" aria-hidden="true">
         0
       </span>
