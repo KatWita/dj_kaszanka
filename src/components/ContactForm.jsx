@@ -46,7 +46,6 @@ const ContactForm = () => {
       <MainButton
         type="submit"
         content="SEND"
-        to="#"
         classnames="lg:w-[174px]"
       />
     </form>

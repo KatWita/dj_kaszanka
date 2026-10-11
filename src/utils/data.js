@@ -1,3 +1,7 @@
+import coverUnstoppable from "../assets/album-unstoppable.png";
+import coverUnlocked from "../assets/album-unlocked.png";
+import coverOuttaControl from "../assets/album-outta-control.png";
+
 export const tours = [
   {
     id: 1,
@@ -157,8 +161,7 @@ export const tours = [
 export const albums = [
   {
     name: "Unstoppable",
-    cover:
-      "https://lh3.google.com/u/0/d/1oZMBcWKm8WhbBReQDpyza6NpONHiMbVH=w1920-h919-iv1",
+    cover: coverUnstoppable,
     year: "2021",
     music: [
       {
@@ -210,8 +213,7 @@ export const albums = [
   },
   {
     name: "Unlocked",
-    cover:
-      "https://lh3.google.com/u/0/d/1O7a0hEhZhhxUSmuYOuoh_iqgbd7Mzl8Q=w1920-h919-iv1",
+    cover: coverUnlocked,
     year: "2022",
     music: [
       {
@@ -253,8 +255,7 @@ export const albums = [
   },
   {
     name: "Outta Control",
-    cover:
-      "https://lh3.google.com/u/0/d/1FK65uIvZx479Hk4OKEYfoa1F0QgpEYrI=w735-h919-iv1",
+    cover: coverOuttaControl,
     year: "2024",
     music: [
       {

@@ -1,4 +1,4 @@
-import Slider from "react-slick";
+import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import {
   david,
@@ -13,6 +13,9 @@ import {
 } from "../assets/colaborations";
 import { NextArrow, PrevArrow } from "./AboutSliderArrows";
 import AboutSingleSlide from "./AboutSingleSlide";
+
+// react-slick is CommonJS; depending on the bundler the component is on `.default`.
+const Slider = SlickSlider.default ?? SlickSlider;
 
 const colaborations = [
   { img: pesto, pseudo: "DJ Pesto" },
@@ -38,7 +41,7 @@ const AboutSlider = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    initalSlide: 0,
+    initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 4000,
     nextArrow: <NextArrow />,
@@ -50,7 +53,7 @@ const AboutSlider = () => {
             display: "flex",
             justifyContent: "center",
           }}
-          className="mt-8 w-full gap-2 sm:gap-[1rem]"
+          className="mt-8 w-full gap-2 sm:gap-4"
         >
           {dots}
         </ul>
@@ -86,8 +89,8 @@ const AboutSlider = () => {
   };
 
   return (
-    <div className="after:contene-[''] relative after:absolute after:-top-[30px] after:-z-[1] after:h-full after:w-screen after:bg-slider-bg">
-      <div className="slider-container lg:px-22 mb-8 mt-16 px-10 max-[350px]:px-4 xl:px-24 2xl:px-44 min-[1700px]:px-[18rem]">
+    <div className="after:contene-[''] relative after:absolute after:top-[-30px] after:z-[-1] after:h-full after:w-screen after:bg-slider-bg">
+      <div className="slider-container mb-8 mt-16 px-10 max-[350px]:px-4 xl:px-24 2xl:px-44 min-[1700px]:px-72">
         <Slider {...settings}>
           {colaborations.map(({ img, pseudo }) => (
             <AboutSingleSlide key={pseudo} image={img} pseudo={pseudo} />

@@ -14,7 +14,7 @@ const AlbumHeader = ({
         <img
           src={albums[currentAlbum].cover}
           alt={`${albums[currentAlbum].name} album cover`}
-          className="block w-[100px] border-[1px] max-[380px]:w-[80px]"
+          className="block w-[100px] border max-[380px]:w-[80px]"
         />
         <div className="font-bruno-ace">
           <p className="mb-4 font-encode-sans text-sm font-medium uppercase">

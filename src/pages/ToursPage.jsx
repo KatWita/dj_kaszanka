@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import SectionTitle from "../components/SectionTitle";
 import triangle from "../assets/triangle-contact.svg";
 import { redPattern, bluePattern, purplePattern } from "../assets/tours";
@@ -6,13 +6,6 @@ import ToursFilterBtns from "../components/ToursFilterBtns";
 import Tours from "../components/Tours";
 import { useState } from "react";
 import { tours } from "../utils/data";
-// import { TOURS_URL } from "../utils/fetch";
-
-// export const loader = async () => {
-//   const res = await fetch(TOURS_URL);
-
-//   return res.json();
-// };
 
 const ToursPage = () => {
   const [month, setMonth] = useState("april");
@@ -24,9 +17,9 @@ const ToursPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="lg:px-22 relative overflow-hidden px-10 max-[350px]:px-4 lg:flex lg:min-h-[calc(100vh-81px)] xl:px-24 2xl:px-44 min-[1700px]:px-[18rem]"
+      className="relative overflow-hidden px-10 max-[350px]:px-4 lg:flex lg:min-h-[calc(100vh-81px)] xl:px-24 2xl:px-44 min-[1700px]:px-72"
     >
-      <div className="pr-30 mt-16 lg:mt-[114px]">
+      <div className="mt-16 lg:mt-[114px]">
         <SectionTitle
           text="Upcomming"
           redText="dates"
@@ -48,18 +41,18 @@ const ToursPage = () => {
             tours={tours}
           />
         </div>
-        <div className="absolute inset-0 -z-[1]">
+        <div className="absolute inset-0 z-[-1]">
           <img
             src={redPattern}
-            className="absolute -left-12 top-[31rem] -z-[1] w-20 max-[340px]:-left-14 lg:-left-[10rem] lg:top-[40rem] lg:w-36 xl:-left-[5rem] xl:top-[41rem] 2xl:left-0 2xl:top-[40rem] min-[1700px]:left-[6rem]"
+            className="absolute -left-12 top-124 z-[-1] w-20 max-[340px]:-left-14 lg:-left-40 lg:top-160 lg:w-36 xl:-left-20 xl:top-164 2xl:left-0 2xl:top-160 min-[1700px]:left-24"
           />
           <img
             src={bluePattern}
-            className="absolute -right-12 top-0 -z-[1] w-24 max-[340px]:-right-12 md:right-20 md:top-10 lg:right-20 lg:top-10 lg:w-40 xl:right-[10rem] 2xl:right-[14rem] min-[1700px]:right-[22rem]"
+            className="absolute -right-12 top-0 z-[-1] w-24 max-[340px]:-right-12 md:right-20 md:top-10 lg:right-20 lg:top-10 lg:w-40 xl:right-40 2xl:right-56 min-[1700px]:right-88"
           />
           <img
             src={purplePattern}
-            className="absolute -right-16 top-[60rem] -z-[1] w-28 md:top-[48rem] lg:-right-[15rem] lg:top-[36rem] lg:w-52 xl:-right-[8rem] 2xl:-right-[3rem] min-[1700px]:right-[4rem]"
+            className="absolute -right-16 top-240 z-[-1] w-28 md:top-192 lg:-right-60 lg:top-144 lg:w-52 xl:-right-32 2xl:-right-12 min-[1700px]:right-16"
           />
         </div>
       </div>

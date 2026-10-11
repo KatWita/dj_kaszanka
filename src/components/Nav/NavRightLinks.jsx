@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import { rightLinks } from "../../utils/navLinkData";
 
 const NavRightLinks = ({ isOpen, setIsOpen }) => {

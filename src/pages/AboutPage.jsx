@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import AboutSliderPage from "../components/AboutSliderPage";
 import AboutValuesPage from "../components/AboutValuesPage";
 import AboutBioPage from "../components/AboutBioPage";

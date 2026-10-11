@@ -1,9 +1,6 @@
-// import { useLoaderData } from "react-router-dom";
 import MainButton from "./MainButton";
 
 const Tours = ({ month, toursCount, setToursCount, tours }) => {
-  // const tours = useLoaderData();
-
   const handleClick = () => {
     setToursCount(toursCount + 2);
   };
@@ -32,7 +29,7 @@ const Tours = ({ month, toursCount, setToursCount, tours }) => {
               <p className="font-bold uppercase text-main-r">{tour.event}</p>
               <p className="mt-3 text-[0.938rem]">{tour.info}</p>
             </div>
-            <div className="mt-6 border-y-[1px] border-border-tours py-4 text-center lg:mt-0 lg:min-w-[160px] lg:border-x-[1px] lg:border-y-0 lg:px-6 lg:py-0 lg:text-left min-[1160px]:min-w-[220px] xl:min-w-[220px] 2xl:min-w-[240px]">
+            <div className="mt-6 border-y border-border-tours py-4 text-center lg:mt-0 lg:min-w-[160px] lg:border-x lg:border-y-0 lg:px-6 lg:py-0 lg:text-left min-[1160px]:min-w-[220px] xl:min-w-[220px] 2xl:min-w-[240px]">
               <p className="uppercase lg:text-[0.875rem]">venue</p>
               <p className="mt-3 font-bold uppercase text-main-r">
                 {tour.venue}
@@ -50,11 +47,10 @@ const Tours = ({ month, toursCount, setToursCount, tours }) => {
               </div>
               <MainButton
                 content="BUY TICKET"
-                to="#"
                 classnames="lg:self-center lg:w-[180px] mt-3 lg:mt-0"
               />
             </div>
-            <div className="absolute -bottom-[15px] left-1/2 h-[1px] w-[98%] -translate-x-1/2 bg-border-tours"></div>
+            <div className="absolute bottom-[-15px] left-1/2 h-px w-[98%] -translate-x-1/2 bg-border-tours"></div>
           </div>
         );
       })}
@@ -62,9 +58,8 @@ const Tours = ({ month, toursCount, setToursCount, tours }) => {
         <MainButton
           type="button"
           content="LOAD MORE"
-          to="#"
           classnames="mt-8 mb-6 lg:mb-0 w-full lg:w-[200px] lg:mx-auto"
-          fnc={handleClick}
+          onClick={handleClick}
         />
       )}
     </div>
