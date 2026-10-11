@@ -58,16 +58,40 @@ const TourRow = ({ tour, animateIn }) => (
   </motion.div>
 );
 
-// Placeholder rows shown while the first page loads
+// Placeholder rows shown while the first page loads: the same grid, borders and
+// separators as a real row, with thin sharp bars where the text will be.
+const Bar = ({ className }) => <span className={`mx-auto block lg:mx-0 ${className}`} />;
+
 const SkeletonRow = () => (
-  <div className="w-full animate-pulse lg:flex lg:items-center lg:gap-8" aria-hidden="true">
-    <div className="mx-auto h-20 w-36 border-t-2 border-main-r/40 bg-white/5 lg:mx-0 lg:border-t-0 lg:border-l-2" />
-    <div className="mt-6 flex-1 space-y-3 lg:mt-0">
-      <div className="mx-auto h-4 w-1/2 bg-white/10 lg:mx-0" />
-      <div className="h-3 w-full bg-white/5" />
-      <div className="h-3 w-4/5 bg-white/5" />
+  <div className={`relative w-full animate-pulse ${ROW_GRID}`} aria-hidden="true">
+    <div className="flex flex-col items-center gap-2 border-t-2 border-main-r px-6 pt-4 lg:border-t-0 lg:border-l-2 lg:pt-1">
+      <Bar className="h-[52px] w-16 bg-white/15" />
+      <Bar className="h-4 w-24 bg-white/10" />
     </div>
-    <div className="mx-auto mt-6 h-16 w-48 bg-white/5 lg:mt-0" />
+    <div className="mt-6 space-y-4 lg:mt-0 lg:pr-4 xl:pr-6 xl:pl-6 2xl:pr-6 2xl:pl-12">
+      <Bar className="h-3.5 w-48 max-w-full bg-main-r/40" />
+      <Bar className="h-2.5 w-full bg-white/10" />
+      <Bar className="h-2.5 w-3/4 bg-white/10" />
+    </div>
+    <div className="mt-6 space-y-3 border-y border-border-tours py-4 lg:mt-0 lg:border-x lg:border-y-0 lg:px-6 lg:py-0">
+      <Bar className="h-2.5 w-12 bg-white/15" />
+      <Bar className="mt-5 h-3.5 w-28 bg-main-r/40" />
+      <Bar className="h-2 w-20 bg-white/10" />
+    </div>
+    <div className="flex flex-col items-center gap-3 pt-4 lg:flex-row lg:gap-8 lg:pt-0 lg:pl-4 xl:gap-10 xl:pl-6 2xl:pl-8">
+      <div className="space-y-3 lg:w-24">
+        <Bar className="h-2.5 w-14 bg-white/15" />
+        <Bar className="mt-5 h-7 w-14 bg-white/15" />
+      </div>
+      {/* the BUY TICKET button's corner lines, dimmed */}
+      <span className="relative block h-[42px] w-[180px] opacity-40">
+        <span className="absolute bottom-0 left-0 h-[60%] w-[2px] bg-linear-to-t from-main-b to-main-p" />
+        <span className="absolute bottom-0 left-0 h-[2px] w-[82%] bg-linear-to-r from-main-b to-main-p" />
+        <span className="absolute top-0 right-0 h-[60%] w-[2px] bg-linear-to-t from-main-p to-main-b" />
+        <span className="absolute top-0 right-0 h-[2px] w-[82%] bg-linear-to-r from-main-p to-main-b" />
+      </span>
+    </div>
+    <div className="absolute bottom-[-15px] left-1/2 h-px w-[98%] -translate-x-1/2 bg-border-tours"></div>
   </div>
 );
 
