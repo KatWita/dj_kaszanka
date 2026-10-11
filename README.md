@@ -12,14 +12,14 @@ Website for a fictional EDM artist, built as a front-end portfolio project.
 - Play any track, browse other albums while music keeps playing, and keep listening while you move between pages.
 - Spotify-style player bar: play/pause, previous/next, **shuffle**, **repeat** (off / album / track), seek bar, volume and mute. Volume and modes are remembered between visits (`localStorage`).
 - When an album ends, the next one starts automatically.
-- **Live audio visualizer**: the bars react to the music that's actually playing. It uses the Web Audio API — an `AnalyserNode` splits the sound into frequencies (FFT) about 60 times a second, and the result is drawn on a `<canvas>`.
+- **Live audio visualizer**: the bars react to the music that's actually playing. It uses the Web Audio API - an `AnalyserNode` splits the sound into frequencies (FFT) about 60 times a second, and the result is drawn on a `<canvas>`.
 - Works with the keyboard (Space = play/pause) and with media keys / phone lock screen (Media Session API).
 - *How it works:* one `<audio>` element for the whole site, shared through React Context. The UI follows the element's real `play`/`pause` events, so the buttons can never show the wrong state.
 
 ![Albums with the player](docs/screenshots/albums.webp)
 
 ### 📅 Tour dates from a CMS (Tours)
-- Events are managed in **Sanity** (a headless CMS) — adding or editing an event in the admin panel updates the site, no code changes needed.
+- Events are managed in **Sanity** (a headless CMS) - adding or editing an event in the admin panel updates the site, no code changes needed.
 - Data is fetched with GROQ queries and **TanStack Query**: month tabs are built from the data, events load 3 at a time ("Load more"), with loading skeletons, an error state with retry, and an empty state.
 - **Events never run out:** a **Netlify Scheduled Function** runs every day and moves events whose date has passed to the end of the schedule, so the list keeps rolling.
 
@@ -35,7 +35,7 @@ Website for a fictional EDM artist, built as a front-end portfolio project.
 
 ### ✨ And also
 - **About:** full-screen sections with scroll snapping, numbers that count up when they come into view, collaborators carousel.
-- **Contact:** form validation with friendly messages and a simulated send (demo only — nothing is sent).
+- **Contact:** form validation with friendly messages and a simulated send (demo only - nothing is sent).
 - **Page transitions** and animations with Motion; respects the system "reduce motion" setting.
 - **Performance:** every page except Home is loaded only when you open it (code splitting), so the first visit downloads much less.
 - **Accessibility:** real buttons and links, keyboard support, labels for screen readers.
