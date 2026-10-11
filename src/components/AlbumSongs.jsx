@@ -1,6 +1,6 @@
-import soundWave from "../assets/red-sound-wave.gif";
 import { FaRegCirclePlay, FaRegCirclePause } from "react-icons/fa6";
 import { usePlayer } from "../player/playerContext";
+import Equalizer from "../player/Equalizer";
 
 const AlbumSongs = ({ album }) => {
   const { current, isPlaying, playTrack } = usePlayer();
@@ -32,27 +32,27 @@ const AlbumSongs = ({ album }) => {
                 aria-current={isActive ? "true" : undefined}
                 className="group grid w-full grid-cols-12 py-3 text-left duration-300 hover:bg-albums-bg-hover focus-visible:bg-albums-bg-hover focus-visible:outline-none md:px-0.5 lg:py-1.5"
               >
-                <span className="relative col-start-1 col-end-3 text-center min-[33.75rem]:col-end-2 min-[33.75rem]:pl-4 min-[33.75rem]:text-left">
-                  {isTrackPlaying ? (
-                    <img
-                      src={soundWave}
-                      alt=""
-                      className="relative bottom-[-4px] left-[10px] duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 min-[24.375rem]:left-[12px] min-[26.875rem]:left-[14px] min-[33.75rem]:left-[-6px] sm:left-[-2px]"
-                    />
-                  ) : (
-                    <span
-                      className={`block duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${isActive ? "text-main-r" : ""}`}
-                    >
-                      {`${index + 1}.`}
-                    </span>
-                  )}
-
-                  <span className="absolute -top-px left-2 opacity-0 duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 min-[24.375rem]:left-2.5 min-[26.875rem]:left-[14px] min-[33.75rem]:left-[8px]">
-                    {isTrackPlaying ? (
-                      <FaRegCirclePause size={26} className="duration-300 hover:fill-main-r" />
+                <span className="col-start-1 col-end-3 flex justify-center min-[33.75rem]:col-end-2 min-[33.75rem]:justify-start min-[33.75rem]:pl-4">
+                  {/* number / equalizer and the hover icon share one 26px box */}
+                  <span className="relative grid size-[26px] place-items-center">
+                    {isActive ? (
+                      <Equalizer
+                        size={26}
+                        playing={isPlaying}
+                        className="duration-300 group-hover:opacity-0 group-focus-visible:opacity-0"
+                      />
                     ) : (
-                      <FaRegCirclePlay size={26} className="duration-300 hover:fill-main-r" />
+                      <span className="duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
+                        {`${index + 1}.`}
+                      </span>
                     )}
+                    <span className="absolute inset-0 grid place-items-center opacity-0 duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      {isTrackPlaying ? (
+                        <FaRegCirclePause size={26} className="duration-300 hover:fill-main-r" />
+                      ) : (
+                        <FaRegCirclePlay size={26} className="duration-300 hover:fill-main-r" />
+                      )}
+                    </span>
                   </span>
                 </span>
 

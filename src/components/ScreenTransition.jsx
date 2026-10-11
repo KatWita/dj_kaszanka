@@ -41,7 +41,7 @@ const ScreenTransition = () => {
           transition={{ delay: 0.35, duration: 0.5, ease: "easeOut" }}
         />
         <Nav />
-        <main className={`text-white ${current ? "pb-24 sm:pb-0" : ""}`}>
+        <main className={`text-white ${current ? "pb-28" : ""}`}>
           <Outlet />
         </main>
       </div>

@@ -1,13 +1,13 @@
 import ScreenTransition from "./components/ScreenTransition";
 import PlayerProvider from "./player/PlayerProvider";
-import MiniPlayer from "./player/MiniPlayer";
+import PlayerBar from "./player/PlayerBar";
 
 // The player lives above the routes, so music keeps playing between pages.
 const Layout = () => {
   return (
     <PlayerProvider>
       <ScreenTransition />
-      <MiniPlayer />
+      <PlayerBar />
     </PlayerProvider>
   );
 };

@@ -1,6 +1,6 @@
-import coverUnstoppable from "../assets/album-unstoppable.png";
-import coverUnlocked from "../assets/album-unlocked.png";
-import coverOuttaControl from "../assets/album-outta-control.png";
+import coverUnstoppable from "../assets/covers/unstoppable.webp";
+import coverUnlocked from "../assets/covers/unlocked.webp";
+import coverOuttaControl from "../assets/covers/outta-control.webp";
 
 export const tours = [
   {

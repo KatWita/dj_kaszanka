@@ -1,6 +1,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PlayerContext } from "./playerContext";
 
+const STORAGE_KEY = "kaszanka-player";
+const REPEAT_MODES = ["off", "all", "one"];
+
+const loadSettings = () => {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? {};
+  } catch {
+    return {};
+  }
+};
+
+const isTypingTarget = (el) =>
+  el instanceof HTMLElement &&
+  (el.isContentEditable ||
+    ["INPUT", "TEXTAREA", "SELECT", "BUTTON", "A"].includes(el.tagName));
+
 /**
  * One audio element for the whole site (like Spotify: only one thing plays at a time).
  * `isPlaying` mirrors the real <audio> play/pause events, so the UI can never
@@ -8,50 +24,121 @@ import { PlayerContext } from "./playerContext";
  */
 const PlayerProvider = ({ children }) => {
   const audioRef = useRef(null);
+  const analyserRef = useRef(null); // Web Audio analyser for the visualizers
   const [current, setCurrent] = useState(null); // { album, index }
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [settings] = useState(loadSettings);
+  const [volume, setVolumeState] = useState(settings.volume ?? 0.8);
+  const [muted, setMuted] = useState(settings.muted ?? false);
+  const [shuffle, setShuffle] = useState(settings.shuffle ?? false);
+  const [repeat, setRepeat] = useState(settings.repeat ?? "off");
 
-  const load = useCallback((album, index) => {
+  // remember the listener's preferences between visits
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ volume, muted, shuffle, repeat }));
+    } catch {
+      /* storage unavailable (private mode etc.) */
+    }
+  }, [volume, muted, shuffle, repeat]);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.src = album.music[index].src;
-    setCurrent({ album, index });
-    setCurrentTime(0);
-    setDuration(0);
-    // play() rejects when interrupted by a quick track switch; that's fine
-    audio.play().catch(() => {});
+    audio.volume = volume;
+    audio.muted = muted;
+  }, [volume, muted]);
+
+  // The analyser can only be created after a user gesture (browser autoplay rules),
+  // so it is set up lazily on the first play.
+  const ensureAnalyser = useCallback(() => {
+    const audio = audioRef.current;
+    if (analyserRef.current || !audio) {
+      analyserRef.current?.context.resume?.();
+      return;
+    }
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    try {
+      const ctx = new Ctx();
+      const source = ctx.createMediaElementSource(audio);
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.8;
+      source.connect(analyser);
+      analyser.connect(ctx.destination);
+      analyserRef.current = analyser;
+    } catch {
+      /* visualizer is a nice-to-have; playback works without it */
+    }
   }, []);
+
+  const play = useCallback(() => {
+    ensureAnalyser();
+    // play() rejects when interrupted by a quick track switch; that's fine
+    audioRef.current?.play().catch(() => {});
+  }, [ensureAnalyser]);
+
+  const load = useCallback(
+    (album, index) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.src = album.music[index].src;
+      setCurrent({ album, index });
+      setCurrentTime(0);
+      setDuration(0);
+      play();
+    },
+    [play],
+  );
 
   const toggle = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio || !audio.currentSrc) return;
-    if (audio.paused) audio.play().catch(() => {});
+    if (!audio || !audio.getAttribute("src")) return;
+    if (audio.paused) play();
     else audio.pause();
-  }, []);
+  }, [play]);
 
   const playTrack = useCallback(
     (album, index) => {
-      const isSameTrack =
-        current?.album.slug === album.slug && current?.index === index;
+      const isSameTrack = current?.album.slug === album.slug && current?.index === index;
       if (isSameTrack) toggle();
       else load(album, index);
     },
     [current, load, toggle],
   );
 
+  const pickNextIndex = useCallback(() => {
+    const total = current.album.music.length;
+    if (shuffle && total > 1) {
+      let i = current.index;
+      while (i === current.index) i = Math.floor(Math.random() * total);
+      return i;
+    }
+    return current.index + 1 < total ? current.index + 1 : null;
+  }, [current, shuffle]);
+
   const next = useCallback(() => {
     const audio = audioRef.current;
     if (!current || !audio) return;
-    if (current.index + 1 < current.album.music.length) {
-      load(current.album, current.index + 1);
-    } else {
+    const i = pickNextIndex();
+    if (i !== null) load(current.album, i);
+    else if (repeat === "all") load(current.album, 0);
+    else {
       // end of the album: stop and rewind
       audio.pause();
       audio.currentTime = 0;
     }
-  }, [current, load]);
+  }, [current, load, pickNextIndex, repeat]);
+
+  const handleEnded = useCallback(() => {
+    if (repeat === "one") {
+      audioRef.current.currentTime = 0;
+      play();
+    } else next();
+  }, [repeat, next, play]);
 
   const prev = useCallback(() => {
     const audio = audioRef.current;
@@ -64,7 +151,7 @@ const PlayerProvider = ({ children }) => {
     }
   }, [current, load]);
 
-  // Stop the music completely and hide the mini-player
+  // Stop the music completely and hide the player bar
   const stop = useCallback(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -80,10 +167,33 @@ const PlayerProvider = ({ children }) => {
 
   const seek = useCallback((time) => {
     const audio = audioRef.current;
-    if (!audio || !audio.currentSrc) return;
+    if (!audio || !audio.getAttribute("src")) return;
     audio.currentTime = time;
     setCurrentTime(time);
   }, []);
+
+  const setVolume = useCallback((v) => {
+    setVolumeState(v);
+    if (v > 0) setMuted(false);
+  }, []);
+
+  const toggleMute = useCallback(() => setMuted((m) => !m), []);
+  const toggleShuffle = useCallback(() => setShuffle((s) => !s), []);
+  const cycleRepeat = useCallback(
+    () => setRepeat((r) => REPEAT_MODES[(REPEAT_MODES.indexOf(r) + 1) % REPEAT_MODES.length]),
+    [],
+  );
+
+  // Space = play/pause anywhere on the page (except while typing or on a focused control)
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.code !== "Space" || !current || isTypingTarget(e.target)) return;
+      e.preventDefault();
+      toggle();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [current, toggle]);
 
   // Lock-screen / media-key controls
   useEffect(() => {
@@ -98,7 +208,7 @@ const PlayerProvider = ({ children }) => {
       });
     }
     const handlers = {
-      play: () => audioRef.current?.play().catch(() => {}),
+      play,
       pause: () => audioRef.current?.pause(),
       nexttrack: next,
       previoustrack: prev,
@@ -110,7 +220,7 @@ const PlayerProvider = ({ children }) => {
         /* action not supported in this browser */
       }
     }
-  }, [current, next, prev]);
+  }, [current, next, prev, play]);
 
   const value = useMemo(
     () => ({
@@ -119,14 +229,26 @@ const PlayerProvider = ({ children }) => {
       isPlaying,
       currentTime,
       duration,
+      volume,
+      muted,
+      shuffle,
+      repeat,
+      analyserRef,
       playTrack,
       toggle,
       next,
       prev,
       seek,
       stop,
+      setVolume,
+      toggleMute,
+      toggleShuffle,
+      cycleRepeat,
     }),
-    [current, isPlaying, currentTime, duration, playTrack, toggle, next, prev, seek, stop],
+    [
+      current, isPlaying, currentTime, duration, volume, muted, shuffle, repeat,
+      playTrack, toggle, next, prev, seek, stop, setVolume, toggleMute, toggleShuffle, cycleRepeat,
+    ],
   );
 
   return (
@@ -139,7 +261,7 @@ const PlayerProvider = ({ children }) => {
         onPause={() => setIsPlaying(false)}
         onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
         onDurationChange={(e) => setDuration(e.currentTarget.duration)}
-        onEnded={next}
+        onEnded={handleEnded}
       />
     </PlayerContext>
   );
