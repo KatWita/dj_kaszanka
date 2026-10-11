@@ -33,7 +33,7 @@ const Photo = ({ photo }) => {
     // the box gets the photo's exact proportions, as big as fits the screen
     <div
       className="relative overflow-hidden"
-      style={{ aspectRatio: `${photo.width} / ${photo.height}`, width: `min(1100px, 92vw, calc(74vh * ${ratio}))` }}
+      style={{ aspectRatio: `${photo.width} / ${photo.height}`, width: `min(1100px, var(--lb-max-w), calc(74vh * ${ratio}))` }}
     >
       <div
         aria-hidden="true"
@@ -166,8 +166,7 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
       onPointerCancel={() => (swipeStart.current = null)}
-      onClick={(e) => e.target === e.currentTarget && onClose()} // click on the backdrop
-      className="fixed inset-0 z-[999] flex touch-pan-y flex-col items-center justify-center gap-4 bg-modal-bg px-4 text-white"
+      className="fixed inset-0 z-[999] flex touch-pan-y flex-col items-center justify-center gap-4 bg-modal-bg px-4 text-white [--lb-max-w:calc(100vw-2rem)] md:[--lb-max-w:calc(100vw-12rem)]"
     >
       <button
         ref={closeRef}
@@ -179,10 +178,15 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
         <VscChromeClose size={34} />
       </button>
 
-      <div className="flex items-center gap-2 md:gap-6">
-        <div className="hidden md:block">
-          <Arrow dir="prev" onClick={() => go(-1)} />
-        </div>
+      {/* desktop arrows are pinned to the screen edges, so they don't move with the photo width */}
+      <div className="absolute top-1/2 left-4 hidden -translate-y-1/2 md:block xl:left-10">
+        <Arrow dir="prev" onClick={() => go(-1)} />
+      </div>
+      <div className="absolute top-1/2 right-4 hidden -translate-y-1/2 md:block xl:right-10">
+        <Arrow dir="next" onClick={() => go(1)} />
+      </div>
+
+      <div className="flex items-center">
         <AnimatePresence mode="popLayout" initial={false} custom={direction}>
           <motion.div
             key={photo.name}
@@ -195,9 +199,6 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
             <Photo photo={photo} />
           </motion.div>
         </AnimatePresence>
-        <div className="hidden md:block">
-          <Arrow dir="next" onClick={() => go(1)} />
-        </div>
       </div>
 
       <div className="flex w-full max-w-[1100px] items-center justify-between gap-4 text-sm">
