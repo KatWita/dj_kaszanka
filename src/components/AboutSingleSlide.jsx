@@ -1,10 +1,10 @@
 import SocialIcons from "./SocialIcons";
 
-function AboutSingleSlide({ image, pseudo, ...otherProps }) {
+function AboutSingleSlide({ image, pseudo }) {
   return (
-    <div {...otherProps} className="group relative overflow-hidden">
+    <div className="group relative overflow-hidden">
       <div className="absolute bottom-0 lg:-bottom-full left-0 w-full bg-slider-bg py-3 text-center lg:duration-300 lg:group-hover:bottom-0">
-        <p className="font-bruno-ace text-bold">{pseudo}</p>
+        <p className="font-bruno-ace">{pseudo}</p>
       </div>
       <div className="absolute right-0 lg:-right-full top-0 bg-slider-bg p-2 text-center lg:duration-300 lg:group-hover:right-0">
         <SocialIcons classnames="flex-col gap-2" />

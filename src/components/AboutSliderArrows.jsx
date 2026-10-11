@@ -1,25 +1,30 @@
-export function NextArrow({ style, onClick }) {
+const arrowBase =
+  "group absolute top-1/2 z-10 inline-block -translate-y-[56px] px-3 max-[350px]:hidden";
+
+export function NextArrow({ onClick }) {
   return (
-    <div
-      className="group absolute -right-8 top-1/2 -translate-y-[calc(56px)] px-3 lg:cursor-pointer xl:-right-16 z-10"
-      style={{ ...style, display: "inline-block" }}
+    <button
+      type="button"
+      aria-label="Next slides"
+      className={`${arrowBase} -right-8 xl:-right-16`}
       onClick={onClick}
     >
-      <div className="bg-main-b-h h-5 w-1 skew-x-20 duration-300 group-hover:bg-main-b"></div>
-      <div className="bg-main-b-h h-5 w-1 skew-x-[-20deg] duration-300 group-hover:bg-main-b"></div>
-    </div>
+      <div className="h-5 w-1 skew-x-20 bg-main-b-h duration-300 group-hover:bg-main-b"></div>
+      <div className="h-5 w-1 skew-x-[-20deg] bg-main-b-h duration-300 group-hover:bg-main-b"></div>
+    </button>
   );
 }
 
-export function PrevArrow({ style, onClick }) {
+export function PrevArrow({ onClick }) {
   return (
-    <div
-      className="group absolute -left-8 top-1/2 -translate-y-[calc(56px)] px-3 lg:cursor-pointer xl:-left-16 z-10"
-      style={{ ...style, display: "inline-block" }}
+    <button
+      type="button"
+      aria-label="Previous slides"
+      className={`${arrowBase} -left-8 xl:-left-16`}
       onClick={onClick}
     >
-      <div className="bg-main-b-h h-5 w-1 skew-x-[-20deg] duration-300 group-hover:bg-main-b"></div>
-      <div className="bg-main-b-h h-5 w-1 skew-x-20 duration-300 group-hover:bg-main-b"></div>
-    </div>
+      <div className="h-5 w-1 skew-x-[-20deg] bg-main-b-h duration-300 group-hover:bg-main-b"></div>
+      <div className="h-5 w-1 skew-x-20 bg-main-b-h duration-300 group-hover:bg-main-b"></div>
+    </button>
   );
 }

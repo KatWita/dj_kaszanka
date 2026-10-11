@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import Equalizer from "../../player/Equalizer";
 import { leftLinks } from "../../utils/navLinkData";
 
 const NavLeftLinks = ({ isOpen, setIsOpen }) => {
@@ -19,6 +20,7 @@ const NavLeftLinks = ({ isOpen, setIsOpen }) => {
             onClick={() => setIsOpen(false)}
           >
             {link.title.toUpperCase()}
+            <Equalizer width={29} height={7} className="nav-eq" />
           </NavLink>
         );
       })}

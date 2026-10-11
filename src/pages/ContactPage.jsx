@@ -8,7 +8,7 @@ import SectionTitle from "../components/SectionTitle";
 const ContactPage = () => {
   return (
     <motion.section
-      className="md:align-center relative overflow-hidden px-10 max-[350px]:px-4 md:min-h-[calc(100vh-81px)] lg:flex xl:px-24 2xl:px-44 min-[1700px]:px-72"
+      className="pb-player px-page md:align-center relative overflow-hidden md:min-h-[calc(100vh-81px)] lg:flex"
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
@@ -63,15 +63,15 @@ const ContactPage = () => {
       <div className="absolute inset-0 z-[-1]">
         <img
           src={redPattern}
-          className="absolute -bottom-16 right-32 z-[-1] w-28 sm:-bottom-32 sm:right-56 sm:w-44 lg:-bottom-36 lg:right-80 lg:w-[20rem] xl:-bottom-44 xl:right-104 xl:w-88 2xl:-bottom-32 2xl:right-128 min-[1700px]:right-184"
+          className="absolute -bottom-16 right-32 z-[-1] w-28 sm:-bottom-32 sm:right-56 sm:w-44 lg:-bottom-36 lg:right-80 lg:w-[20rem] xl:-bottom-44 xl:right-104 xl:w-88 2xl:-bottom-32 2xl:right-128 3xl:right-184"
         />
         <img
           src={bluePattern}
-          className="absolute bottom-4 right-4 z-[-1] w-24 sm:bottom-4 sm:right-8 sm:w-32 lg:bottom-12 lg:right-4 lg:w-56 xl:-bottom-20 xl:right-20 xl:w-60 2xl:bottom-32 2xl:right-40 min-[1700px]:right-96"
+          className="absolute bottom-4 right-4 z-[-1] w-24 sm:bottom-4 sm:right-8 sm:w-32 lg:bottom-12 lg:right-4 lg:w-56 xl:-bottom-20 xl:right-20 xl:w-60 2xl:bottom-32 2xl:right-40 3xl:right-96"
         />
         <img
           src={purplePattern}
-          className="absolute bottom-32 right-2 z-[-1] w-24 sm:bottom-44 sm:w-36 lg:bottom-88 lg:w-56 xl:right-16 xl:w-[16rem] 2xl:bottom-108 2xl:right-40 min-[1700px]:right-80"
+          className="absolute bottom-32 right-2 z-[-1] w-24 sm:bottom-44 sm:w-36 lg:bottom-88 lg:w-56 xl:right-16 xl:w-[16rem] 2xl:bottom-108 2xl:right-40 3xl:right-80"
         />
       </div>
     </motion.section>

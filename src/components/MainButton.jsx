@@ -10,7 +10,7 @@ const MainButton = ({
   onClick,
   ...rest
 }) => {
-  const className = `main-btn relative inline-block px-10 py-3 text-center text-xs duration-300 hover:text-main-p min-[412px]:px-12 min-[412px]:text-sm ${classnames}`;
+  const className = `main-btn relative inline-block px-10 py-3 text-center text-xs duration-300 hover:text-main-p min-[25.75rem]:px-12 min-[25.75rem]:text-sm ${classnames}`;
 
   const inner = (
     <>

@@ -29,7 +29,7 @@ const Tours = ({ month, toursCount, setToursCount, tours }) => {
               <p className="font-bold uppercase text-main-r">{tour.event}</p>
               <p className="mt-3 text-[0.938rem]">{tour.info}</p>
             </div>
-            <div className="mt-6 border-y border-border-tours py-4 text-center lg:mt-0 lg:min-w-[160px] lg:border-x lg:border-y-0 lg:px-6 lg:py-0 lg:text-left min-[1160px]:min-w-[220px] xl:min-w-[220px] 2xl:min-w-[240px]">
+            <div className="mt-6 border-y border-border-tours py-4 text-center lg:mt-0 lg:min-w-[160px] lg:border-x lg:border-y-0 lg:px-6 lg:py-0 lg:text-left min-[72.5rem]:min-w-[220px] xl:min-w-[220px] 2xl:min-w-[240px]">
               <p className="uppercase lg:text-[0.875rem]">venue</p>
               <p className="mt-3 font-bold uppercase text-main-r">
                 {tour.venue}

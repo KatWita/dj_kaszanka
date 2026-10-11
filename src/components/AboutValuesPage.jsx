@@ -14,7 +14,7 @@ const aboutInfo = [
 
 const AboutValuesPage = () => {
   return (
-    <article className="relative overflow-y-clip px-10 max-[350px]:px-4 md:flex md:justify-end lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center xl:px-24 2xl:px-44 min-[1700px]:px-72">
+    <article className="px-page relative overflow-y-clip md:flex md:justify-end lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center">
       <div className="flex flex-col items-center sm:gap-28 md:gap-20">
         <div className="relative mt-24 inline-block border-y-2 border-main-b py-1.5 sm:w-full sm:px-6 md:mt-32">
           <img
@@ -49,15 +49,15 @@ const AboutValuesPage = () => {
       <div className="">
         <img
           src={secondKaszankaMobile}
-          className="absolute bottom-0 left-1/2 z-2 w-[130px] -translate-x-1/2 min-[500px]:right-0 sm:left-34 sm:translate-x-0 md:left-16 lg:hidden"
+          className="absolute bottom-0 left-1/2 z-2 w-[130px] -translate-x-1/2 min-[31.25rem]:right-0 sm:left-34 sm:translate-x-0 md:left-16 lg:hidden"
         />
         <img
           src={secondKaszankaDesktop}
-          className="absolute bottom-0 z-2 hidden lg:left-32 lg:block lg:w-[240px] xl:left-48 xl:w-[260px] 2xl:left-52 2xl:w-[270px] min-[1700px]:left-80"
+          className="absolute bottom-0 z-2 hidden lg:left-32 lg:block lg:w-[240px] xl:left-48 xl:w-[260px] 2xl:left-52 2xl:w-[270px] 3xl:left-80"
         />
         <img
           src={secondBgPattern}
-          className="absolute bottom-0 left-1/2 w-[280px] -translate-x-1/2 sm:left-52 md:left-0 md:translate-x-0 lg:bottom-16 lg:left-8 lg:w-[460px] xl:left-20 xl:w-[500px] 2xl:bottom-12 2xl:left-20 2xl:w-[540px] min-[1700px]:left-48"
+          className="absolute bottom-0 left-1/2 w-[280px] -translate-x-1/2 sm:left-52 md:left-0 md:translate-x-0 lg:bottom-16 lg:left-8 lg:w-[460px] xl:left-20 xl:w-[500px] 2xl:bottom-12 2xl:left-20 2xl:w-[540px] 3xl:left-48"
         />
       </div>
     </article>

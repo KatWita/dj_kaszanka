@@ -12,6 +12,9 @@
   --color-slider-bg: #000000c0;
   --color-albums-bg-hover: hsla(0, 0%, 85%, 0.09);
 
+  /* extra breakpoint for very wide screens (1700px) */
+  --breakpoint-3xl: 106.25rem;
+
   --font-encode-sans: Encode Sans, sans-serif;
   --font-bruno-ace: Bruno Ace SC, sans-serif;
 
@@ -52,6 +55,32 @@
   }
 }
 
+/* Page content: max 1320px wide and centered; gutters on smaller screens.
+   Backgrounds and decorations still span the full width. */
+:root {
+  --page-gutter: 2.5rem;
+}
+@media (width < 350px) {
+  :root {
+    --page-gutter: 1rem;
+  }
+}
+@media (width >= 80rem) {
+  :root {
+    --page-gutter: 6rem;
+  }
+}
+/* Room for the fixed player bar. Sections use border-box, so on a page that
+   fits the screen this sits inside the section's min-height (no extra scroll);
+   on longer pages it keeps the last content from hiding under the bar. */
+@utility pb-player {
+  padding-bottom: var(--player-offset, 0px);
+}
+
+@utility px-page {
+  padding-inline: max(var(--page-gutter), calc((100% - 82.5rem) / 2));
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -73,31 +102,28 @@ h4 {
   font-family: "Bruno Ace SC", sans-serif;
 }
 
-/* NAV LINKS HOVER EFFECT */
+/* NAV LINKS HOVER EFFECT: the same CSS equalizer as the player, under the link */
 .music-wave {
   position: relative;
 }
 
-.music-wave:hover::before {
-  opacity: 1;
-}
-
-.music-wave::before {
-  content: url(./assets/sound-wave.gif);
+.music-wave .nav-eq {
   position: absolute;
   bottom: -14px;
   left: 50%;
   transform: translateX(-50%);
+  padding: 0;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.music-wave.active {
-  color: #b129d3;
+.music-wave:hover .nav-eq,
+.music-wave.active .nav-eq {
+  opacity: 1;
 }
 
-.music-wave.active:before {
-  opacity: 1;
+.music-wave.active {
+  color: #b129d3;
 }
 
 /* BTN HOVER */
@@ -121,18 +147,6 @@ h4 {
   width: 100%;
 }
 
-/* slider about */
-.slick-slide > div {
-  margin: 0 15px;
-}
-.slick-list {
-  margin: 0 -15px;
-}
-
-.slick-active > button {
-  background-color: #ff3767;
-}
-
 @media (min-width: 520px) {
   .max-width-small {
     max-width: 205px;
@@ -140,14 +154,6 @@ h4 {
 }
 
 @media (min-width: 1024px) {
-  /* slider about */
-  .slick-slide > div {
-    margin: 0 20px;
-  }
-  .slick-list {
-    margin: 0 -20px;
-  }
-
   /* hide scroll - about */
   /* Chrome, Safari and Opera */
   .hide-scroll::-webkit-scrollbar {
@@ -158,4 +164,79 @@ h4 {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+}
+
+/* EQUALIZER (nav + player): thin, dense, sharp bars in one solid colour;
+   timings are set per bar in Equalizer.jsx */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 1px;
+  padding: 3px 0;
+}
+
+.eq-bar {
+  flex: 1 1 0;
+  background: var(--color-main-p);
+  height: 100%;
+  transform-origin: bottom;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+
+.eq[data-playing="false"] .eq-bar {
+  animation-play-state: paused;
+}
+
+@keyframes eq-bounce {
+  0%,
+  100% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar { animation: none; transform: scaleY(var(--h, 0.6)); }
+}
+
+/* RANGE SLIDERS (player progress + volume); --p = filled percentage */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-main-r) var(--p, 0%),
+    rgb(255 255 255 / 0.2) var(--p, 0%)
+  );
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 9999px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.range:hover::-webkit-slider-thumb,
+.range:focus-visible::-webkit-slider-thumb { opacity: 1; }
+.range:hover::-moz-range-thumb,
+.range:focus-visible::-moz-range-thumb { opacity: 1; }
+
+.range:focus-visible {
+  outline: 2px solid var(--color-main-r);
+  outline-offset: 4px;
 }

@@ -9,7 +9,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={` ${isOpen ? "sticky" : "relative"} top-0 z-10 flex items-center justify-between bg-transparent px-10 py-2 max-[350px]:px-4 xl:px-24 2xl:px-44 min-[1700px]:px-72`}
+      className={`px-page ${isOpen ? "sticky" : "relative"} top-0 z-10 flex items-center justify-between bg-transparent py-2`}
     >
       <div
         className={`absolute top-0 z-0 min-h-screen w-screen bg-mobile-nav lg:hidden ${

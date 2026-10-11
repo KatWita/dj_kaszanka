@@ -6,7 +6,7 @@ import triangle from "../assets/triangle-contact.svg";
 
 const AboutBioPage = () => {
   return (
-    <article className="relative px-10 max-[350px]:px-4 md:flex lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center lg:overflow-y-clip xl:px-24 2xl:px-44 min-[1700px]:px-72">
+    <article className="px-page relative md:flex lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center lg:overflow-y-clip">
       <div className="mt-14 pr-4 lg:mt-0 lg:w-1/2">
         <SectionTitle
           text="Biography"
@@ -47,11 +47,11 @@ const AboutBioPage = () => {
       <div className="hidden lg:block">
         <img
           src={KaszankaDesktop}
-          className="absolute right-0 bottom-0 z-2 hidden lg:block lg:w-[500px] xl:right-24 2xl:right-52 2xl:w-[540px] min-[1700px]:right-76"
+          className="absolute right-0 bottom-0 z-2 hidden lg:block lg:w-[500px] xl:right-24 2xl:right-52 2xl:w-[540px] 3xl:right-76"
         />
         <img
           src={bgPattern}
-          className="absolute right-[-17vw] bottom-4 sm:-bottom-10 sm:right-[-20vw] md:-bottom-14 md:right-[-18vw] md:w-[620px] min-[860px]:right-[-15vw] lg:-bottom-28 lg:-right-24 lg:w-[600px] xl:-bottom-32 xl:right-0 xl:w-[620px] 2xl:-bottom-60 2xl:right-8 2xl:w-[760px] min-[1700px]:right-32"
+          className="absolute right-[-17vw] bottom-4 sm:-bottom-10 sm:right-[-20vw] md:-bottom-14 md:right-[-18vw] md:w-[620px] min-[53.75rem]:right-[-15vw] lg:-bottom-28 lg:-right-24 lg:w-[600px] xl:-bottom-32 xl:right-0 xl:w-[620px] 2xl:-bottom-60 2xl:right-8 2xl:w-[760px] 3xl:right-32"
         />
       </div>
     </article>
