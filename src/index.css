@@ -83,6 +83,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* always reserve the scrollbar's space, so the page doesn't shift sideways when
+     scrolling is locked (lightbox) or between short and long pages */
+  scrollbar-gutter: stable;
 }
 
 body {
