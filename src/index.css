@@ -86,6 +86,10 @@ html {
   /* always reserve the scrollbar's space, so the page doesn't shift sideways when
      scrolling is locked (lightbox) or between short and long pages */
   scrollbar-gutter: stable;
+  /* dark scrollbar in the site's colours (purple thumb on the page's near-black) */
+  color-scheme: dark;
+  scrollbar-color: var(--color-main-b) #04001c;
+  background: #04001c; /* also paints the empty scrollbar space on short pages */
 }
 
 body {
