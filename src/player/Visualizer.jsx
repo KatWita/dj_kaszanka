@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { usePlayer } from "./playerContext";
 
-const BAR_COLOR = "#B129D3"; // same solid purple as the nav sound-wave and the equalizer
+const BAR_COLOR = "#B129D3"; // same solid purple as the equalizers
 
 /**
  * Live spectrum bars drawn from the Web Audio analyser.

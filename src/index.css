@@ -95,31 +95,28 @@ h4 {
   font-family: "Bruno Ace SC", sans-serif;
 }
 
-/* NAV LINKS HOVER EFFECT */
+/* NAV LINKS HOVER EFFECT: the same CSS equalizer as the player, under the link */
 .music-wave {
   position: relative;
 }
 
-.music-wave:hover::before {
-  opacity: 1;
-}
-
-.music-wave::before {
-  content: url(./assets/sound-wave.gif);
+.music-wave .nav-eq {
   position: absolute;
   bottom: -14px;
   left: 50%;
   transform: translateX(-50%);
+  padding: 0;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.music-wave.active {
-  color: #b129d3;
+.music-wave:hover .nav-eq,
+.music-wave.active .nav-eq {
+  opacity: 1;
 }
 
-.music-wave.active:before {
-  opacity: 1;
+.music-wave.active {
+  color: #b129d3;
 }
 
 /* BTN HOVER */
@@ -162,7 +159,7 @@ h4 {
   }
 }
 
-/* EQUALIZER (player): thin, dense, sharp bars (like the nav sound-wave);
+/* EQUALIZER (nav + player): thin, dense, sharp bars in one solid colour;
    timings are set per bar in Equalizer.jsx */
 .eq {
   display: inline-flex;
