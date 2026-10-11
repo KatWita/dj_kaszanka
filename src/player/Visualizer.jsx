@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { usePlayer } from "./playerContext";
 
-const COLORS = ["#5B1FDB", "#B129D3", "#FF3767"];
+const BAR_COLOR = "#B129D3"; // same solid purple as the nav sound-wave and the equalizer
 
 /**
  * Live spectrum bars drawn from the Web Audio analyser.
@@ -30,12 +30,10 @@ const Visualizer = ({ active = true, bars = 32, className = "" }) => {
       }
       const { width: w, height: h } = canvas;
       ctx.clearRect(0, 0, w, h);
-      const grad = ctx.createLinearGradient(0, 0, w, 0);
-      COLORS.forEach((c, i) => grad.addColorStop(i / (COLORS.length - 1), c));
-      ctx.fillStyle = grad;
+      ctx.fillStyle = BAR_COLOR;
 
       const slot = w / bars;
-      const barW = slot * 0.6;
+      const barW = Math.max(1, slot * 0.5); // thin bars with sharp ends, like the rest of the site
       let settled = true;
       for (let i = 0; i < bars; i++) {
         // more bars for bass/mids, where most of the energy in EDM is
@@ -44,9 +42,7 @@ const Visualizer = ({ active = true, bars = 32, className = "" }) => {
         levels[i] += (target - levels[i]) * (live ? 0.5 : 0.12);
         if (levels[i] > 0.01) settled = false;
         const barH = Math.max(h * 0.08, levels[i] * h);
-        ctx.beginPath();
-        ctx.roundRect(i * slot + (slot - barW) / 2, h - barH, barW, barH, barW / 2);
-        ctx.fill();
+        ctx.fillRect(i * slot + (slot - barW) / 2, h - barH, barW, barH);
       }
       if (live || !settled) raf = requestAnimationFrame(draw);
     };

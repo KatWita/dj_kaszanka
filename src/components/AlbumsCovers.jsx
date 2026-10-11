@@ -36,7 +36,7 @@ const AlbumsCovers = ({ albums, setCurrentAlbum, currentAlbum }) => {
               />
               {isPlayingHere && (
                 <span className="absolute top-2 left-2 flex items-center gap-2 bg-slider-bg px-2 py-1 text-[10px] tracking-widest text-main-r uppercase">
-                  <Equalizer size={16} className="p-0!" />
+                  <Equalizer size={16} bars={7} className="p-0!" />
                   <span className="max-sm:hidden">Playing</span>
                 </span>
               )}

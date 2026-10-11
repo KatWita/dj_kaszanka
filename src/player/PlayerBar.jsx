@@ -144,7 +144,7 @@ const PlayerBar = () => {
 
             {/* desktop: visualizer, volume, close */}
             <div className="hidden items-center justify-end gap-2 md:flex">
-              <Visualizer className="mr-2 hidden h-8 w-28 lg:block" bars={20} />
+              <Visualizer className="mr-2 hidden h-8 w-28 lg:block" bars={36} />
               <button
                 type="button"
                 onClick={p.toggleMute}

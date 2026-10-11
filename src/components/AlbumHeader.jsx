@@ -51,7 +51,7 @@ const AlbumHeader = ({ album }) => {
         </button>
         <Visualizer
           active={isThisAlbum}
-          bars={24}
+          bars={44}
           className="hidden h-12 min-w-0 flex-1 sm:block md:max-w-48"
         />
         <MusicSitesIcons />
