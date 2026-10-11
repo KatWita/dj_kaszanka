@@ -1,85 +1,61 @@
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 import SectionTitle from "../components/SectionTitle";
 import triangle from "../assets/triangle-contact.svg";
-import gallery from "../utils/gallery";
 import MainButton from "../components/MainButton";
-import { useState } from "react";
-import { createPortal } from "react-dom";
-import ModalGallery from "../components/ModalGallery";
+import GalleryThumb from "../components/GalleryThumb";
+import Lightbox from "../components/Lightbox";
+import { photos } from "../lib/gallery";
 import { redPattern, bluePattern, purplePattern } from "../assets/gallery";
 
+const PAGE_SIZE = 6;
+
 const GalleryPage = () => {
-  const [showGalleryItems, setShowGalleryItems] = useState(6);
-  const [picNumber, setPicNumber] = useState(0);
-  const [showPicture, setShowPicture] = useState(false);
-
-  const handleShowPicture = (index) => {
-    setPicNumber(index);
-    setShowPicture(true);
-  };
-
-  const prevPic = () => {
-    picNumber === 0
-      ? setPicNumber(gallery.slice(0, showGalleryItems).length - 1)
-      : setPicNumber(picNumber - 1);
-  };
-
-  const nextPic = () => {
-    picNumber + 1 === gallery.slice(0, showGalleryItems).length
-      ? setPicNumber(0)
-      : setPicNumber(picNumber + 1);
-  };
+  const [visible, setVisible] = useState(PAGE_SIZE);
+  const [openIndex, setOpenIndex] = useState(null); // photo shown in the lightbox
 
   return (
     <motion.section
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="pb-player px-page relative lg:min-h-[calc(100vh-81px)] overflow-hidden"
+      className="pb-player px-page relative overflow-hidden lg:min-h-[calc(100vh-81px)]"
     >
-      {showPicture &&
-        createPortal(
-          <ModalGallery
-            onClose={() => setShowPicture(false)}
-            gallery={gallery}
-            picNumber={picNumber}
-            prevPic={prevPic}
-            nextPic={nextPic}
-          />,
-          document.body,
-        )}
       <div className="mb-8 flex flex-col pt-20">
-        <SectionTitle
-          text="Gallery"
-          redText=":"
-          triangle={triangle}
-          classnames="text-2xl"
-        />
+        <SectionTitle text="Gallery" redText=":" triangle={triangle} classnames="text-2xl" />
         <div className="mt-10 grid gap-x-5 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
-          {gallery
-            .map(({ id, small, desc }, index) => {
-              return (
-                <div key={id} className="group overflow-hidden">
-                  <img
-                    src={small}
-                    alt={desc}
-                    className="cursor-pointer border border-main-b-h object-cover transition-transform duration-300 w-full md:aspect-[440/263] lg:group-hover:scale-[1.05]"
-                    onClick={() => handleShowPicture(index)}
-                  />
-                </div>
-              );
-            })
-            .slice(0, showGalleryItems)}
+          {photos.slice(0, visible).map((photo, i) => (
+            // photos added by "Load more" slide in; the first page comes with the page
+            <motion.div
+              key={photo.name}
+              initial={i >= PAGE_SIZE ? { opacity: 0, y: 24 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: ((i % PAGE_SIZE) * 0.05), ease: "easeOut" }}
+            >
+              <GalleryThumb photo={photo} onOpen={() => setOpenIndex(i)} />
+            </motion.div>
+          ))}
         </div>
-        {showGalleryItems <= gallery.length && (
+        {visible < photos.length && (
           <MainButton
-            type="button"
             content="LOAD MORE"
+            aria-label={`Load more photos (${visible} of ${photos.length} shown)`}
             classnames="mt-8 mb-6 lg:mb-0 w-full lg:w-[200px] lg:mx-auto"
-            onClick={() => setShowGalleryItems(showGalleryItems + 6)}
+            onClick={() => setVisible((v) => v + PAGE_SIZE)}
           />
         )}
       </div>
+      <AnimatePresence>
+        {openIndex !== null && (
+          <Lightbox
+            key="lightbox"
+            photos={photos}
+            index={openIndex}
+            onIndexChange={setOpenIndex}
+            onClose={() => setOpenIndex(null)}
+          />
+        )}
+      </AnimatePresence>
       <div className="absolute inset-0 z-[-1]">
         <img
           src={redPattern}
