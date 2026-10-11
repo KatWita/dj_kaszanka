@@ -8,8 +8,9 @@ const AlbumSongs = ({ album }) => {
   return (
     <div className="text-[15px] md:text-[16px]">
       <div className="mt-14 grid grid-cols-12 border-b pb-[2px]" aria-hidden="true">
-        <p className="col-start-1 col-end-3 text-center min-[33.75rem]:col-end-2 min-[33.75rem]:pl-4 min-[33.75rem]:text-left md:text-left">
-          #
+        {/* same 26px box as the numbers below, so # sits centred over them */}
+        <p className="col-start-1 col-end-3 flex justify-center min-[33.75rem]:col-end-2 min-[33.75rem]:justify-start min-[33.75rem]:pl-4">
+          <span className="w-[26px] text-center">#</span>
         </p>
         <p className="col-start-3 col-end-10 pl-2 sm:col-start-2 md:pl-4">
           Title
@@ -35,14 +36,17 @@ const AlbumSongs = ({ album }) => {
                 <span className="col-start-1 col-end-3 flex justify-center min-[33.75rem]:col-end-2 min-[33.75rem]:justify-start min-[33.75rem]:pl-4">
                   {/* number / equalizer and the hover icon share one 26px box */}
                   <span className="relative grid size-[26px] place-items-center">
-                    {isActive ? (
+                    {/* playing: equalizer; paused or idle: number (red when it's the loaded track) */}
+                    {isTrackPlaying ? (
                       <Equalizer
-                        size={26}
-                        playing={isPlaying}
-                        className="duration-300 group-hover:opacity-0 group-focus-visible:opacity-0"
+                        width={26}
+                        height={16}
+                        className="p-0! duration-300 group-hover:opacity-0 group-focus-visible:opacity-0"
                       />
                     ) : (
-                      <span className="duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
+                      <span
+                        className={`duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${isActive ? "text-main-r" : ""}`}
+                      >
                         {`${index + 1}.`}
                       </span>
                     )}

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PlayerContext } from "./playerContext";
+import { albums } from "../utils/data";
 
 const STORAGE_KEY = "kaszanka-player";
 const REPEAT_MODES = ["off", "all", "one"];
@@ -124,13 +125,14 @@ const PlayerProvider = ({ children }) => {
     const audio = audioRef.current;
     if (!current || !audio) return;
     const i = pickNextIndex();
-    if (i !== null) load(current.album, i);
-    else if (repeat === "all") load(current.album, 0);
-    else {
-      // end of the album: stop and rewind
-      audio.pause();
-      audio.currentTime = 0;
-    }
+    if (i !== null) return load(current.album, i);
+    if (repeat === "all") return load(current.album, 0);
+    // end of the album: carry on with the next album (like Spotify's autoplay)
+    const nextAlbum = albums[albums.findIndex((a) => a.slug === current.album.slug) + 1];
+    if (nextAlbum) return load(nextAlbum, 0);
+    // end of the last album: stop and rewind
+    audio.pause();
+    audio.currentTime = 0;
   }, [current, load, pickNextIndex, repeat]);
 
   const handleEnded = useCallback(() => {
