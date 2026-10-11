@@ -6,7 +6,7 @@ import triangle from "../assets/triangle-contact.svg";
 
 const AboutBioPage = () => {
   return (
-    <article className="relative px-10 max-[350px]:px-4 md:flex lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center lg:overflow-y-clip xl:px-24 2xl:px-44 3xl:px-72">
+    <article className="px-page relative md:flex lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center lg:overflow-y-clip">
       <div className="mt-14 pr-4 lg:mt-0 lg:w-1/2">
         <SectionTitle
           text="Biography"

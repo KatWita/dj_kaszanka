@@ -7,7 +7,7 @@ const AboutSliderPage = () => {
   return (
     <article className="relative overflow-hidden lg:min-h-[calc(100vh-81px)] lg:snap-end lg:pt-0">
       <div className="mt-20 lg:relative lg:top-[calc(18vh-81px)]">
-        <div className="px-10 max-[350px]:px-4 xl:px-24 2xl:px-44 3xl:px-72">
+        <div className="px-page">
           <SectionTitle
             text="Colaborates"
             redText="with"

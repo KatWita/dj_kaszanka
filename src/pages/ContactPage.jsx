@@ -8,7 +8,7 @@ import SectionTitle from "../components/SectionTitle";
 const ContactPage = () => {
   return (
     <motion.section
-      className="md:align-center relative overflow-hidden px-10 max-[350px]:px-4 md:min-h-[calc(100vh-81px)] lg:flex xl:px-24 2xl:px-44 3xl:px-72"
+      className="px-page md:align-center relative overflow-hidden md:min-h-[calc(100vh-81px)] lg:flex"
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}

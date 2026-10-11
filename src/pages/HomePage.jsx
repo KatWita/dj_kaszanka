@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 const HomePage = () => {
   return (
     <motion.header
-      className="relative h-[calc(100vh-81px)] overflow-hidden px-10 max-[350px]:px-4 lg:flex xl:px-24 2xl:px-44 3xl:px-72"
+      className="px-page relative h-[calc(100vh-81px)] overflow-hidden lg:flex"
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}

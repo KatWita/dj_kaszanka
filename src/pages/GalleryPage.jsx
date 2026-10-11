@@ -35,7 +35,7 @@ const GalleryPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="relative px-10 max-[350px]:px-4 lg:min-h-[calc(100vh-81px)] overflow-hidden xl:px-24 2xl:px-44 3xl:px-72"
+      className="px-page relative lg:min-h-[calc(100vh-81px)] overflow-hidden"
     >
       {showPicture &&
         createPortal(
@@ -63,7 +63,7 @@ const GalleryPage = () => {
                   <img
                     src={small}
                     alt={desc}
-                    className="cursor-pointer border border-main-b-h object-cover transition-transform duration-300 md:h-[263px] md:w-[440px] lg:group-hover:scale-[1.05]"
+                    className="cursor-pointer border border-main-b-h object-cover transition-transform duration-300 w-full md:aspect-[440/263] lg:group-hover:scale-[1.05]"
                     onClick={() => handleShowPicture(index)}
                   />
                 </div>

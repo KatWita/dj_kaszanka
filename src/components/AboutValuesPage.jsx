@@ -14,7 +14,7 @@ const aboutInfo = [
 
 const AboutValuesPage = () => {
   return (
-    <article className="relative overflow-y-clip px-10 max-[350px]:px-4 md:flex md:justify-end lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center xl:px-24 2xl:px-44 3xl:px-72">
+    <article className="px-page relative overflow-y-clip md:flex md:justify-end lg:h-[calc(100vh-81px)] lg:snap-end lg:items-center">
       <div className="flex flex-col items-center sm:gap-28 md:gap-20">
         <div className="relative mt-24 inline-block border-y-2 border-main-b py-1.5 sm:w-full sm:px-6 md:mt-32">
           <img

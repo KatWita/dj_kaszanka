@@ -65,7 +65,7 @@ const AboutSlider = () => {
 
   return (
     <div className="relative after:absolute after:top-[-30px] after:z-[-1] after:h-full after:w-screen after:bg-slider-bg">
-      <div className="mt-16 mb-8 px-10 max-[350px]:px-4 xl:px-24 2xl:px-44 3xl:px-72">
+      <div className="px-page mt-16 mb-8">
         <section className="relative" aria-roledescription="carousel" aria-label="Collaborations">
           <PrevArrow onClick={prev} />
           <div className="-mx-[15px] overflow-hidden lg:-mx-5" ref={emblaRef}>

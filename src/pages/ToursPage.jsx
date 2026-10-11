@@ -17,7 +17,7 @@ const ToursPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="relative overflow-hidden px-10 max-[350px]:px-4 lg:flex lg:min-h-[calc(100vh-81px)] xl:px-24 2xl:px-44 3xl:px-72"
+      className="px-page relative overflow-hidden lg:flex lg:min-h-[calc(100vh-81px)]"
     >
       <div className="mt-16 lg:mt-[114px]">
         <SectionTitle
