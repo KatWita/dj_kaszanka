@@ -42,7 +42,9 @@ const ScreenTransition = () => {
         />
         <Nav />
         {/* while the player bar is visible, sections reserve room for it via .pb-player */}
-        <main className="text-white" style={{ "--player-offset": current ? "6rem" : "0px" }}>
+        {/* `isolate` gives main its own stacking layer, so the decorative patterns
+            (z-index -1) stay above the page background but below the content */}
+        <main className="isolate text-white" style={{ "--player-offset": current ? "6rem" : "0px" }}>
           <Outlet />
         </main>
       </div>
