@@ -60,6 +60,7 @@ const ToursPage = () => {
           )}
           <Tours
             tours={tours}
+            firstPageSize={eventsQuery.data?.pages[0]?.items.length ?? 0}
             total={total}
             status={status}
             hasMore={eventsQuery.hasNextPage}

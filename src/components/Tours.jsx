@@ -9,14 +9,20 @@ const formatMonthYear = (iso) => {
   return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 };
 
-const TourRow = ({ tour }) => (
+// Desktop: a grid with fixed column widths, so every row lines up the same
+// no matter how long the title/description/venue is (only the info column flexes).
+const ROW_GRID =
+  "lg:grid lg:grid-cols-[180px_minmax(0,1fr)_160px_auto] min-[72.5rem]:grid-cols-[180px_minmax(0,1fr)_220px_auto] 2xl:grid-cols-[180px_minmax(0,1fr)_240px_auto]";
+
+// Only rows added by "Load more" slide in; the first page arrives with the page itself.
+const TourRow = ({ tour, animateIn }) => (
   <motion.div
-    initial={{ opacity: 0, y: 24 }}
+    initial={animateIn ? { opacity: 0, y: 24 } : false}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4, ease: "easeOut" }}
-    className="relative w-full lg:flex lg:justify-between"
+    className={`relative w-full ${ROW_GRID}`}
   >
-    <div className="flex flex-col items-center border-t-2 border-main-r px-6 pt-4 text-center lg:min-w-[180px] lg:border-t-0 lg:border-l-2 lg:pt-0">
+    <div className="flex flex-col items-center border-t-2 border-main-r px-6 pt-4 text-center lg:border-t-0 lg:border-l-2 lg:pt-0">
       <time dateTime={tour.date} className="contents">
         <p className="font-bruno-ace text-[3.25rem] leading-none">{formatDay(tour.date)}</p>
         <p className="font-bruno-ace text-[1.063rem] whitespace-nowrap uppercase lg:mt-1">
@@ -28,13 +34,14 @@ const TourRow = ({ tour }) => (
       <p className="font-bold text-main-r uppercase">{tour.title}</p>
       {tour.description && <p className="mt-3 text-[0.938rem]">{tour.description}</p>}
     </div>
-    <div className="mt-6 border-y border-border-tours py-4 text-center lg:mt-0 lg:min-w-[160px] lg:border-x lg:border-y-0 lg:px-6 lg:py-0 lg:text-left min-[72.5rem]:min-w-[220px] xl:min-w-[220px] 2xl:min-w-[240px]">
+    <div className="mt-6 min-w-0 border-y border-border-tours py-4 text-center break-words lg:mt-0 lg:border-x lg:border-y-0 lg:px-6 lg:py-0 lg:text-left">
       <p className="uppercase lg:text-[0.875rem]">venue</p>
       <p className="mt-3 font-bold text-main-r uppercase">{tour.venue}</p>
       <p className="text-[0.7rem] text-white uppercase lg:text-[0.65rem]">{tour.place}</p>
     </div>
     <div className="pt-4 text-center lg:flex lg:gap-8 lg:pt-0 lg:pl-4 lg:text-left xl:gap-10 xl:pl-6 2xl:pl-8">
-      <div>
+      {/* fixed width, so "20$" and "149$" rows keep the button in the same place */}
+      <div className="lg:w-24">
         <p className="uppercase lg:text-[0.875rem]">tickets</p>
         <p className="mt-3 font-bruno-ace text-3xl">
           {tour.ticketPrice != null ? `${tour.ticketPrice}$` : "TBA"}
@@ -64,7 +71,7 @@ const SkeletonRow = () => (
   </div>
 );
 
-const Tours = ({ tours, total, status, isFetchingMore, hasMore, onLoadMore, onRetry }) => {
+const Tours = ({ tours, total, status, isFetchingMore, hasMore, onLoadMore, onRetry, firstPageSize = 3 }) => {
   if (status === "pending") {
     return (
       <div className="mt-12 mb-14 flex w-full flex-col gap-20 lg:gap-8" role="status">
@@ -95,8 +102,8 @@ const Tours = ({ tours, total, status, isFetchingMore, hasMore, onLoadMore, onRe
 
   return (
     <div className="mt-12 mb-14 flex w-full flex-col gap-20 lg:gap-8">
-      {tours.map((tour) => (
-        <TourRow key={tour._id} tour={tour} />
+      {tours.map((tour, i) => (
+        <TourRow key={tour._id} tour={tour} animateIn={i >= firstPageSize} />
       ))}
       {hasMore && (
         <MainButton
