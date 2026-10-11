@@ -2,16 +2,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import SectionTitle from "../components/SectionTitle";
 import triangle from "../assets/triangle-contact.svg";
-import MainButton from "../components/MainButton";
 import GalleryThumb from "../components/GalleryThumb";
+import RevealOnScroll from "../components/RevealOnScroll";
 import Lightbox from "../components/Lightbox";
 import { photos } from "../lib/gallery";
 import { redPattern, bluePattern, purplePattern } from "../assets/gallery";
 
-const PAGE_SIZE = 6;
-
 const GalleryPage = () => {
-  const [visible, setVisible] = useState(PAGE_SIZE);
   const [openIndex, setOpenIndex] = useState(null); // photo shown in the lightbox
 
   return (
@@ -23,27 +20,15 @@ const GalleryPage = () => {
     >
       <div className="mb-8 flex flex-col pt-20">
         <SectionTitle text="Gallery" redText=":" triangle={triangle} classnames="text-2xl" />
-        <div className="mt-10 grid gap-x-5 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
-          {photos.slice(0, visible).map((photo, i) => (
-            // photos added by "Load more" slide in; the first page comes with the page
-            <motion.div
-              key={photo.name}
-              initial={i >= PAGE_SIZE ? { opacity: 0, y: 24 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: ((i % PAGE_SIZE) * 0.05), ease: "easeOut" }}
-            >
+        <div className="mt-10 grid gap-x-5 gap-y-4 md:grid-cols-2 lg:grid-cols-4">
+          {/* all 16 at once: images are lazy-loaded, so only what's on screen downloads;
+              photos further down slide in as you scroll to them */}
+          {photos.map((photo, i) => (
+            <RevealOnScroll key={photo.name} delay={(i % 4) * 80}>
               <GalleryThumb photo={photo} onOpen={() => setOpenIndex(i)} />
-            </motion.div>
+            </RevealOnScroll>
           ))}
         </div>
-        {visible < photos.length && (
-          <MainButton
-            content="LOAD MORE"
-            aria-label={`Load more photos (${visible} of ${photos.length} shown)`}
-            classnames="mt-8 mb-6 lg:mb-0 w-full lg:w-[200px] lg:mx-auto"
-            onClick={() => setVisible((v) => v + PAGE_SIZE)}
-          />
-        )}
       </div>
       <AnimatePresence>
         {openIndex !== null && (

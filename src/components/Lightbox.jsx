@@ -169,7 +169,7 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
       className="fixed inset-0 z-[999] flex touch-pan-y flex-col items-center justify-center gap-4 bg-modal-bg px-4 text-white [--lb-max-w:calc(100vw-2rem)] md:[--lb-max-w:calc(100vw-12rem)]"
     >
       <p
-        className="absolute top-5 left-5 grid h-11 place-items-center font-bruno-ace text-main-r lg:top-8 lg:left-8"
+        className="absolute top-5 left-5 grid h-11 place-items-center font-bruno-ace text-sm text-white lg:top-8 lg:left-8"
         aria-live="polite"
       >
         {index + 1} / {photos.length}
