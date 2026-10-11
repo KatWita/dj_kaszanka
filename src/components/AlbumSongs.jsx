@@ -8,7 +8,7 @@ const AlbumSongs = ({ album }) => {
   return (
     <div className="text-[15px] md:text-[16px]">
       <div className="mt-14 grid grid-cols-12 border-b pb-[2px]" aria-hidden="true">
-        <p className="col-start-1 col-end-3 text-center min-[540px]:col-end-2 min-[540px]:pl-4 min-[540px]:text-left md:text-left">
+        <p className="col-start-1 col-end-3 text-center min-[33.75rem]:col-end-2 min-[33.75rem]:pl-4 min-[33.75rem]:text-left md:text-left">
           #
         </p>
         <p className="col-start-3 col-end-10 pl-2 sm:col-start-2 md:pl-4">
@@ -32,12 +32,12 @@ const AlbumSongs = ({ album }) => {
                 aria-current={isActive ? "true" : undefined}
                 className="group grid w-full grid-cols-12 py-3 text-left duration-300 hover:bg-albums-bg-hover focus-visible:bg-albums-bg-hover focus-visible:outline-none md:px-0.5 lg:py-1.5"
               >
-                <span className="relative col-start-1 col-end-3 text-center min-[540px]:col-end-2 min-[540px]:pl-4 min-[540px]:text-left">
+                <span className="relative col-start-1 col-end-3 text-center min-[33.75rem]:col-end-2 min-[33.75rem]:pl-4 min-[33.75rem]:text-left">
                   {isTrackPlaying ? (
                     <img
                       src={soundWave}
                       alt=""
-                      className="relative bottom-[-4px] left-[10px] duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 min-[390px]:left-[12px] min-[430px]:left-[14px] min-[540px]:left-[-6px] sm:left-[-2px]"
+                      className="relative bottom-[-4px] left-[10px] duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 min-[24.375rem]:left-[12px] min-[26.875rem]:left-[14px] min-[33.75rem]:left-[-6px] sm:left-[-2px]"
                     />
                   ) : (
                     <span
@@ -47,7 +47,7 @@ const AlbumSongs = ({ album }) => {
                     </span>
                   )}
 
-                  <span className="absolute -top-px left-2 opacity-0 duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 min-[390px]:left-2.5 min-[430px]:left-[14px] min-[540px]:left-[8px]">
+                  <span className="absolute -top-px left-2 opacity-0 duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 min-[24.375rem]:left-2.5 min-[26.875rem]:left-[14px] min-[33.75rem]:left-[8px]">
                     {isTrackPlaying ? (
                       <FaRegCirclePause size={26} className="duration-300 hover:fill-main-r" />
                     ) : (

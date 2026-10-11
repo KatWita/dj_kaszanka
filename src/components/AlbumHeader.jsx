@@ -25,7 +25,7 @@ const AlbumHeader = ({ album }) => {
           <p className="text-main-r max-[466px]:text-[.9rem]">{album.year}</p>
         </div>
       </div>
-      <div className="flex w-full justify-between md:w-auto md:gap-8 min-[820px]:gap-16 lg:gap-20 xl:gap-32 2xl:gap-44">
+      <div className="flex w-full justify-between md:w-auto md:gap-8 min-[51.25rem]:gap-16 lg:gap-20 xl:gap-32 2xl:gap-44">
         <button
           type="button"
           // continue this album if it's loaded, otherwise start it from track 1

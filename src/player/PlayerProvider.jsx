@@ -64,6 +64,20 @@ const PlayerProvider = ({ children }) => {
     }
   }, [current, load]);
 
+  // Stop the music completely and hide the mini-player
+  const stop = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+    }
+    setCurrent(null);
+    setCurrentTime(0);
+    setDuration(0);
+    if ("mediaSession" in navigator) navigator.mediaSession.metadata = null;
+  }, []);
+
   const seek = useCallback((time) => {
     const audio = audioRef.current;
     if (!audio || !audio.currentSrc) return;
@@ -110,8 +124,9 @@ const PlayerProvider = ({ children }) => {
       next,
       prev,
       seek,
+      stop,
     }),
-    [current, isPlaying, currentTime, duration, playTrack, toggle, next, prev, seek],
+    [current, isPlaying, currentTime, duration, playTrack, toggle, next, prev, seek, stop],
   );
 
   return (

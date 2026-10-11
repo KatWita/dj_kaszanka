@@ -35,7 +35,7 @@ const GalleryPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="relative px-10 max-[350px]:px-4 lg:min-h-[calc(100vh-81px)] overflow-hidden xl:px-24 2xl:px-44 min-[1700px]:px-72"
+      className="relative px-10 max-[350px]:px-4 lg:min-h-[calc(100vh-81px)] overflow-hidden xl:px-24 2xl:px-44 3xl:px-72"
     >
       {showPicture &&
         createPortal(
@@ -83,15 +83,15 @@ const GalleryPage = () => {
       <div className="absolute inset-0 z-[-1]">
         <img
           src={redPattern}
-          className="absolute -right-4 top-240 z-[-1] w-20 md:top-192 lg:-right-12 lg:top-160 lg:w-36 2xl:right-0 min-[1700px]:right-32"
+          className="absolute -right-4 top-240 z-[-1] w-20 md:top-192 lg:-right-12 lg:top-160 lg:w-36 2xl:right-0 3xl:right-32"
         />
         <img
           src={bluePattern}
-          className="absolute -right-2 top-8 z-[-1] w-24 max-[340px]:-right-14 md:right-8 lg:right-20 lg:top-12 lg:w-40 xl:right-56 2xl:right-72 min-[1700px]:right-96"
+          className="absolute -right-2 top-8 z-[-1] w-24 max-[340px]:-right-14 md:right-8 lg:right-20 lg:top-12 lg:w-40 xl:right-56 2xl:right-72 3xl:right-96"
         />
         <img
           src={purplePattern}
-          className="absolute -left-2 top-124 z-[-1] w-24 max-[340px]:-left-14 lg:-left-8 lg:top-100 lg:w-40 xl:left-0 2xl:left-8 min-[1700px]:left-28"
+          className="absolute -left-2 top-124 z-[-1] w-24 max-[340px]:-left-14 lg:-left-8 lg:top-100 lg:w-40 xl:left-0 2xl:left-8 3xl:left-28"
         />
       </div>
     </motion.section>

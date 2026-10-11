@@ -12,6 +12,9 @@
   --color-slider-bg: #000000c0;
   --color-albums-bg-hover: hsla(0, 0%, 85%, 0.09);
 
+  /* extra breakpoint for very wide screens (1700px) */
+  --breakpoint-3xl: 106.25rem;
+
   --font-encode-sans: Encode Sans, sans-serif;
   --font-bruno-ace: Bruno Ace SC, sans-serif;
 
@@ -121,18 +124,6 @@ h4 {
   width: 100%;
 }
 
-/* slider about */
-.slick-slide > div {
-  margin: 0 15px;
-}
-.slick-list {
-  margin: 0 -15px;
-}
-
-.slick-active > button {
-  background-color: #ff3767;
-}
-
 @media (min-width: 520px) {
   .max-width-small {
     max-width: 205px;
@@ -140,14 +131,6 @@ h4 {
 }
 
 @media (min-width: 1024px) {
-  /* slider about */
-  .slick-slide > div {
-    margin: 0 20px;
-  }
-  .slick-list {
-    margin: 0 -20px;
-  }
-
   /* hide scroll - about */
   /* Chrome, Safari and Opera */
   .hide-scroll::-webkit-scrollbar {

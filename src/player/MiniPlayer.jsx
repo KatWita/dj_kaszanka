@@ -1,12 +1,12 @@
 import { AnimatePresence, motion } from "motion/react";
-import { FaBackwardStep, FaForwardStep, FaPause, FaPlay } from "react-icons/fa6";
+import { FaBackwardStep, FaForwardStep, FaPause, FaPlay, FaXmark } from "react-icons/fa6";
 import { formatTime, usePlayer } from "./playerContext";
 
 const iconBtn =
   "grid size-9 place-items-center rounded-full duration-300 hover:text-main-r focus-visible:outline-2 focus-visible:outline-main-r";
 
 const MiniPlayer = () => {
-  const { current, currentTrack, isPlaying, currentTime, duration, toggle, next, prev, seek } =
+  const { current, currentTrack, isPlaying, currentTime, duration, toggle, next, prev, seek, stop } =
     usePlayer();
 
   return (
@@ -48,6 +48,16 @@ const MiniPlayer = () => {
               </button>
               <button type="button" onClick={next} aria-label="Next track" className={iconBtn}>
                 <FaForwardStep size={16} />
+              </button>
+              <span className="mx-1 h-6 w-px bg-white/20" aria-hidden="true" />
+              <button
+                type="button"
+                onClick={stop}
+                aria-label="Close player"
+                title="Stop and close"
+                className={`${iconBtn} text-white/70`}
+              >
+                <FaXmark size={16} />
               </button>
             </div>
           </div>
