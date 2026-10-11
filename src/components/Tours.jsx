@@ -2,8 +2,12 @@ import { motion } from "motion/react";
 import MainButton from "./MainButton";
 
 const formatDay = (iso) => new Date(iso).toLocaleDateString("en-GB", { day: "numeric" });
-const formatMonthYear = (iso) =>
-  new Date(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+// "NOV 2026": 3-letter months always fit the date column (and avoid en-GB's "Sept")
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const formatMonthYear = (iso) => {
+  const d = new Date(iso);
+  return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+};
 
 const TourRow = ({ tour }) => (
   <motion.div
