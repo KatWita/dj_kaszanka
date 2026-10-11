@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from "motion/react";
 import { Outlet, useLocation } from "react-router";
 import Nav from "../components/Nav/Nav";
+import { usePlayer } from "../player/playerContext";
 
 const ScreenTransition = () => {
   const { pathname } = useLocation();
+  const { current } = usePlayer();
   const path =
     pathname.substring(1).charAt(0).toUpperCase() + pathname.substring(2);
 
@@ -39,7 +41,7 @@ const ScreenTransition = () => {
           transition={{ delay: 0.35, duration: 0.5, ease: "easeOut" }}
         />
         <Nav />
-        <main className="text-white">
+        <main className={`text-white ${current ? "pb-24 sm:pb-0" : ""}`}>
           <Outlet />
         </main>
       </div>

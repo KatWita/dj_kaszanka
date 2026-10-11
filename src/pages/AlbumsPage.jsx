@@ -20,7 +20,7 @@ const AlbumsPage = () => {
         setCurrentAlbum={setCurrentAlbum}
         currentAlbum={currentAlbum}
       />
-      <AlbumContainer albums={albums} currentAlbum={currentAlbum} />
+      <AlbumContainer album={albums[currentAlbum]} />
       <div className="absolute inset-0 z-[-1]">
         <img
           src={redPattern}

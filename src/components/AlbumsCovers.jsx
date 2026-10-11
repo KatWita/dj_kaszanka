@@ -1,30 +1,45 @@
 import triangle from "../assets/triangle-contact.svg";
+import soundWave from "../assets/red-sound-wave.gif";
+import { usePlayer } from "../player/playerContext";
 
 const AlbumsCovers = ({ albums, setCurrentAlbum, currentAlbum }) => {
+  const { current, isPlaying } = usePlayer();
+
   return (
     <div className="flex flex-col items-center">
       <h3 className="relative mb-5">
         <img
           src={triangle}
-          className="absolute -left-8 -top-4 z-[-1] w-10 lg:-top-4 xl:-left-12 xl:-top-8 xl:w-14"
+          alt=""
+          className="absolute -top-4 -left-8 z-[-1] w-10 lg:-top-4 xl:-top-8 xl:-left-12 xl:w-14"
         />
         Choose <span className="text-main-r">album</span>:
       </h3>
       <div className="flex gap-5 lg:flex-col">
-        {albums.map(({ cover, name }, index) => {
+        {albums.map(({ cover, name, slug }, index) => {
+          const isSelected = currentAlbum === index;
+          const isPlayingHere = isPlaying && current?.album.slug === slug;
+
           return (
             <button
-              key={name}
-              className="group block"
-              onClick={() => {
-                setCurrentAlbum(index);
-              }}
+              key={slug}
+              type="button"
+              className="group relative block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-main-r"
+              onClick={() => setCurrentAlbum(index)}
+              aria-pressed={isSelected}
+              aria-label={`Show album ${name}${isPlayingHere ? " (now playing)" : ""}`}
             >
               <img
                 src={cover}
-                alt={`${name} album cover`}
-                className={`border lg:w-[160px] xl:w-[200px] ${currentAlbum === index ? "scale-105 border-main-r" : "border-white"} duration-300 group-hover:border-main-r`}
+                alt=""
+                className={`border lg:w-[160px] xl:w-[200px] ${isSelected ? "scale-105 border-main-r" : "border-white"} duration-300 group-hover:border-main-r`}
               />
+              {isPlayingHere && (
+                <span className="absolute bottom-2 left-2 flex items-center gap-2 bg-slider-bg px-2 py-1 text-[10px] tracking-widest text-main-r uppercase">
+                  <img src={soundWave} alt="" className="w-[20px]" />
+                  <span className="max-sm:hidden">Playing</span>
+                </span>
+              )}
             </button>
           );
         })}
