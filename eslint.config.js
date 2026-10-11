@@ -27,4 +27,10 @@ export default [
       ],
     },
   },
+  {
+    // Netlify functions run on Node
+    files: ["netlify/**/*.{js,mjs}"],
+    languageOptions: { globals: globals.node },
+    settings: { react: { version: "detect" } },
+  },
 ];
