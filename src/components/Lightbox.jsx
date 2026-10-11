@@ -213,8 +213,8 @@ const Lightbox = ({ photos, index, onIndexChange, onClose }) => {
         </AnimatePresence>
       </div>
 
-      {/* phones: arrows under the photo */}
-      <div className="flex w-full items-center justify-between md:hidden">
+      {/* phones: arrows pinned to the bottom of the screen, so they don't move with the photo height */}
+      <div className="absolute inset-x-4 bottom-6 flex items-center justify-between md:hidden">
         <Arrow dir="prev" onClick={() => go(-1)} className="size-16" />
         <Arrow dir="next" onClick={() => go(1)} className="size-16" />
       </div>
