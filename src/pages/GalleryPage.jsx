@@ -35,7 +35,7 @@ const GalleryPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="px-page relative lg:min-h-[calc(100vh-81px)] overflow-hidden"
+      className="pb-player px-page relative lg:min-h-[calc(100vh-81px)] overflow-hidden"
     >
       {showPicture &&
         createPortal(

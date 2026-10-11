@@ -5,7 +5,7 @@ import { redPattern, bluePattern, purplePattern } from "../assets/about-slider";
 
 const AboutSliderPage = () => {
   return (
-    <article className="relative overflow-hidden lg:min-h-[calc(100vh-81px)] lg:snap-end lg:pt-0">
+    <article className="pb-player relative overflow-hidden lg:min-h-[calc(100vh-81px)] lg:snap-end lg:pt-0">
       <div className="mt-20 lg:relative lg:top-[calc(18vh-81px)]">
         <div className="px-page">
           <SectionTitle

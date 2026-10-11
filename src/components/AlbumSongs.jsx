@@ -40,7 +40,7 @@ const AlbumSongs = ({ album }) => {
                     {isTrackPlaying ? (
                       <Equalizer
                         width={26}
-                        height={16}
+                        height={12}
                         className="p-0! duration-300 group-hover:opacity-0 group-focus-visible:opacity-0"
                       />
                     ) : (

@@ -17,7 +17,7 @@ const ToursPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="px-page relative overflow-hidden lg:flex lg:min-h-[calc(100vh-81px)]"
+      className="pb-player px-page relative overflow-hidden lg:flex lg:min-h-[calc(100vh-81px)]"
     >
       <div className="mt-16 lg:mt-[114px]">
         <SectionTitle

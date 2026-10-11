@@ -13,7 +13,7 @@ const AlbumsPage = () => {
       initial={{ x: "-200vw" }}
       animate={{ x: 0 }}
       transition={{ duration: 1 }}
-      className="px-page relative overflow-hidden lg:flex lg:h-[calc(100vh-81px)] lg:items-start lg:justify-between lg:pt-16"
+      className="pb-player px-page relative overflow-hidden lg:flex lg:h-[calc(100vh-81px)] lg:items-start lg:justify-between lg:pt-16"
     >
       <AlbumsCovers
         albums={albums}

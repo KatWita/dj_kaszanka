@@ -70,6 +70,13 @@
     --page-gutter: 6rem;
   }
 }
+/* Room for the fixed player bar. Sections use border-box, so on a page that
+   fits the screen this sits inside the section's min-height (no extra scroll);
+   on longer pages it keeps the last content from hiding under the bar. */
+@utility pb-player {
+  padding-bottom: var(--player-offset, 0px);
+}
+
 @utility px-page {
   padding-inline: max(var(--page-gutter), calc((100% - 82.5rem) / 2));
 }

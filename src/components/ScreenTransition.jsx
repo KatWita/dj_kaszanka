@@ -41,7 +41,8 @@ const ScreenTransition = () => {
           transition={{ delay: 0.35, duration: 0.5, ease: "easeOut" }}
         />
         <Nav />
-        <main className={`text-white ${current ? "pb-28" : ""}`}>
+        {/* while the player bar is visible, sections reserve room for it via .pb-player */}
+        <main className="text-white" style={{ "--player-offset": current ? "6rem" : "0px" }}>
           <Outlet />
         </main>
       </div>
